@@ -120,6 +120,7 @@ class ShellScaffold extends StatelessWidget {
           _buildNavItem(context, 'Browse', Icons.search, '/browse'),
           _buildNavItem(context, 'Map', Icons.map_outlined, '/map'),
           _buildNavItem(context, 'Calendar', Icons.calendar_today_outlined, '/calendar'),
+          _buildNavItem(context, 'About', Icons.info_outline, '/about'),
         ],
       ),
     );
@@ -222,6 +223,7 @@ class ShellScaffold extends StatelessWidget {
           _buildDesktopNavLink(context, 'Browse', '/browse'),
           _buildDesktopNavLink(context, 'Map', '/map'),
           _buildDesktopNavLink(context, 'Calendar', '/calendar'),
+          _buildDesktopNavLink(context, 'About', '/about'),
           const SizedBox(width: 24),
           // CTA button
           FilledButton.icon(

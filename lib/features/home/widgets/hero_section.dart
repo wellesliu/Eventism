@@ -8,250 +8,295 @@ import 'search_bar.dart';
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
-  // Accent colors for mesh gradient effect
-  static const _tealAccent = Color(0xFF22D3D1);
-  static const _blueAccent = Color(0xFF0EA5E9);
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     final isMobile = Breakpoints.isMobile(width);
 
-    return ClipRect(
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFF064E3B), // Dark green
+            EventismTheme.primaryDark,
+            EventismTheme.primary,
+          ],
+          stops: [0.0, 0.4, 1.0],
+        ),
+      ),
       child: Stack(
         children: [
-          // Base gradient
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  EventismTheme.primary,
-                  EventismTheme.primaryDark,
-                  Color(0xFF065F46), // Darker green
-                ],
-                stops: [0.0, 0.5, 1.0],
-              ),
+          // Subtle pattern overlay
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _DotPatternPainter(),
             ),
           ),
-          // Mesh gradient overlay - top right blob
-          Positioned(
-            top: -80,
-            right: -60,
-            child: Container(
-              width: 300,
-              height: 300,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    _tealAccent.withValues(alpha: 0.4),
-                    _tealAccent.withValues(alpha: 0.0),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          // Mesh gradient overlay - bottom left blob
-          Positioned(
-            bottom: -100,
-            left: -80,
-            child: Container(
-              width: 350,
-              height: 350,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    _blueAccent.withValues(alpha: 0.3),
-                    _blueAccent.withValues(alpha: 0.0),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          // Mesh gradient overlay - center-right small blob
-          Positioned(
-            top: 120,
-            right: isMobile ? 20 : 200,
-            child: Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    EventismTheme.primaryLight.withValues(alpha: 0.5),
-                    EventismTheme.primaryLight.withValues(alpha: 0.0),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          // Floating decorative shapes
-          if (!isMobile) ...[
-            // Large ring - top left
-            Positioned(
-              top: 40,
-              left: 60,
-              child: Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.15),
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            // Small filled circle - bottom right
-            Positioned(
-              bottom: 60,
-              right: 120,
-              child: Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withValues(alpha: 0.1),
-                ),
-              ),
-            ),
-            // Medium ring - right side
-            Positioned(
-              top: 180,
-              right: 80,
-              child: Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.1),
-                    width: 1.5,
-                  ),
-                ),
-              ),
-            ),
-            // Dot cluster - left side
-            Positioned(
-              bottom: 120,
-              left: 150,
-              child: Row(
-                children: List.generate(
-                  3,
-                  (i) => Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    width: 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white.withValues(alpha: 0.15 - (i * 0.04)),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
           // Content
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 24 : 64,
-              vertical: isMobile ? 48 : 80,
+              vertical: isMobile ? 40 : 64,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Discover Amazing Events',
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Colors.white,
-                        fontSize: isMobile ? 32 : 48,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Find and explore events happening near you',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Colors.white.withValues(alpha: 0.9),
-                        fontWeight: FontWeight.w400,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 32),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 600),
-                  child: HomeSearchBar(
-                    onSearch: (query) {
-                      context.go('/browse?q=$query');
-                    },
-                  ),
-                ),
-                const SizedBox(height: 32),
-                // Stats with glass effect
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32,
-                    vertical: 20,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.2),
-                      width: 1,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildStat(context, '500+', 'Events'),
-                      _buildDivider(),
-                      _buildStat(context, '50+', 'Categories'),
-                      _buildDivider(),
-                      _buildStat(context, '15+', 'Cities'),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            child: isMobile
+                ? _buildMobileLayout(context)
+                : _buildDesktopLayout(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDivider() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      width: 1,
-      height: 40,
-      color: Colors.white.withValues(alpha: 0.2),
+  Widget _buildMobileLayout(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Discover\nAmazing Events',
+          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                color: Colors.white,
+                fontSize: 36,
+                fontWeight: FontWeight.w700,
+                height: 1.2,
+              ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Find experiences happening near you',
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Colors.white.withValues(alpha: 0.85),
+              ),
+        ),
+        const SizedBox(height: 24),
+        HomeSearchBar(
+          onSearch: (query) {
+            if (context.mounted) {
+              context.go('/browse?q=$query');
+            }
+          },
+        ),
+        const SizedBox(height: 24),
+        _buildStats(context),
+      ],
     );
   }
 
-  Widget _buildStat(BuildContext context, String value, String label) {
+  Widget _buildDesktopLayout(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Left side - Text content
+        Expanded(
+          flex: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Discover Amazing\nEvents Near You',
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      height: 1.15,
+                    ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Find and explore experiences happening in your community.\nFrom markets to festivals, concerts to conferences.',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontWeight: FontWeight.w400,
+                      height: 1.6,
+                    ),
+              ),
+              const SizedBox(height: 32),
+              _buildStats(context),
+            ],
+          ),
+        ),
+        const SizedBox(width: 48),
+        // Right side - Search card
+        Expanded(
+          flex: 4,
+          child: Container(
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.15),
+                  blurRadius: 30,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Find Events',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: EventismTheme.textPrimary,
+                      ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search events...',
+                    prefixIcon: const Icon(Icons.search),
+                    filled: true,
+                    fillColor: EventismTheme.background,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  onSubmitted: (query) {
+                    if (context.mounted) {
+                      context.go('/browse?q=$query');
+                    }
+                  },
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildQuickFilter(
+                        context,
+                        icon: Icons.calendar_today,
+                        label: 'This Week',
+                        onTap: () => context.go('/browse'),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _buildQuickFilter(
+                        context,
+                        icon: Icons.location_on,
+                        label: 'Near Me',
+                        onTap: () => context.go('/map'),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () => context.go('/browse'),
+                    style: FilledButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    child: const Text('Browse All Events'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildQuickFilter(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: EventismTheme.background,
+      borderRadius: BorderRadius.circular(10),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 16, color: EventismTheme.primary),
+              const SizedBox(width: 6),
+              Text(
+                label,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: EventismTheme.textPrimary,
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStats(BuildContext context) {
+    return Row(
+      children: [
+        _buildStatItem(context, '500+', 'Events'),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          width: 1,
+          height: 32,
+          color: Colors.white.withValues(alpha: 0.3),
+        ),
+        _buildStatItem(context, '50+', 'Categories'),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          width: 1,
+          height: 32,
+          color: Colors.white.withValues(alpha: 0.3),
+        ),
+        _buildStatItem(context, '15+', 'Cities'),
+      ],
+    );
+  }
+
+  Widget _buildStatItem(BuildContext context, String value, String label) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           value,
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
               ),
         ),
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.white.withValues(alpha: 0.8),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Colors.white.withValues(alpha: 0.75),
               ),
         ),
       ],
     );
   }
+}
+
+class _DotPatternPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withValues(alpha: 0.03)
+      ..style = PaintingStyle.fill;
+
+    const spacing = 40.0;
+    const radius = 2.0;
+
+    for (double x = 0; x < size.width; x += spacing) {
+      for (double y = 0; y < size.height; y += spacing) {
+        canvas.drawCircle(Offset(x, y), radius, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

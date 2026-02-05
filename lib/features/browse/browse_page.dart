@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/constants.dart';
 import '../../core/theme.dart';
@@ -79,9 +80,16 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                 ),
                 child: Column(
                   children: [
-                    Row(
+                    // Main search row with date filters
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 12,
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Expanded(
+                        // Search field
+                        SizedBox(
+                          width: isMobile ? double.infinity : 400,
                           child: TextField(
                             controller: _searchController,
                             decoration: InputDecoration(
@@ -102,18 +110,119 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                             },
                           ),
                         ),
-                        if (!isDesktop) ...[
-                          const SizedBox(width: 8),
+                        // Date range pickers
+                        _buildDateButton(
+                          context,
+                          ref,
+                          label: 'From',
+                          date: filters.startDate,
+                          onTap: () async {
+                            final date = await showDatePicker(
+                              context: context,
+                              initialDate: filters.startDate ?? DateTime.now(),
+                              firstDate: DateTime.now().subtract(const Duration(days: 30)),
+                              lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+                            );
+                            if (date != null) {
+                              ref.read(browseStateProvider.notifier).setDateRange(
+                                    date,
+                                    filters.endDate,
+                                  );
+                            }
+                          },
+                          onClear: filters.startDate != null
+                              ? () => ref.read(browseStateProvider.notifier).setDateRange(null, filters.endDate)
+                              : null,
+                        ),
+                        _buildDateButton(
+                          context,
+                          ref,
+                          label: 'To',
+                          date: filters.endDate,
+                          onTap: () async {
+                            final date = await showDatePicker(
+                              context: context,
+                              initialDate: filters.endDate ??
+                                  (filters.startDate ?? DateTime.now()).add(const Duration(days: 30)),
+                              firstDate: filters.startDate ?? DateTime.now().subtract(const Duration(days: 30)),
+                              lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+                            );
+                            if (date != null) {
+                              ref.read(browseStateProvider.notifier).setDateRange(
+                                    filters.startDate,
+                                    date,
+                                  );
+                            }
+                          },
+                          onClear: filters.endDate != null
+                              ? () => ref.read(browseStateProvider.notifier).setDateRange(filters.startDate, null)
+                              : null,
+                        ),
+                        // Accepting vendors checkbox
+                        Container(
+                          decoration: BoxDecoration(
+                            color: filters.acceptingVendors
+                                ? EventismTheme.success.withValues(alpha: 0.1)
+                                : EventismTheme.surface,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: filters.acceptingVendors
+                                  ? EventismTheme.success
+                                  : EventismTheme.border,
+                            ),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              ref.read(browseStateProvider.notifier)
+                                  .setAcceptingVendors(!filters.acceptingVendors);
+                            },
+                            borderRadius: BorderRadius.circular(8),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 10,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    filters.acceptingVendors
+                                        ? Icons.check_box
+                                        : Icons.check_box_outline_blank,
+                                    size: 20,
+                                    color: filters.acceptingVendors
+                                        ? EventismTheme.success
+                                        : EventismTheme.textMuted,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Accepting Vendors',
+                                    style: TextStyle(
+                                      color: filters.acceptingVendors
+                                          ? EventismTheme.success
+                                          : EventismTheme.textSecondary,
+                                      fontWeight: filters.acceptingVendors
+                                          ? FontWeight.w500
+                                          : FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        // More filters button (mobile)
+                        if (!isDesktop)
                           IconButton.filled(
                             onPressed: () {
                               setState(() => _showFilters = !_showFilters);
                             },
                             icon: Badge(
-                              isLabelVisible: filters.hasFilters,
-                              child: const Icon(Icons.filter_list),
+                              isLabelVisible: filters.tags.isNotEmpty || filters.city != null,
+                              child: const Icon(Icons.tune),
                             ),
                           ),
-                        ],
                       ],
                     ),
                     // Mobile filter panel
@@ -247,6 +356,61 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildDateButton(
+    BuildContext context,
+    WidgetRef ref, {
+    required String label,
+    required DateTime? date,
+    required VoidCallback onTap,
+    VoidCallback? onClear,
+  }) {
+    final dateFormat = DateFormat('MMM d, y');
+    final hasDate = date != null;
+
+    return Container(
+      constraints: const BoxConstraints(minWidth: 140),
+      child: OutlinedButton(
+        onPressed: onTap,
+        style: OutlinedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          side: BorderSide(
+            color: hasDate ? EventismTheme.primary : EventismTheme.border,
+          ),
+          backgroundColor: hasDate ? EventismTheme.primary.withValues(alpha: 0.05) : null,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.calendar_today,
+              size: 16,
+              color: hasDate ? EventismTheme.primary : EventismTheme.textMuted,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              hasDate ? dateFormat.format(date) : label,
+              style: TextStyle(
+                color: hasDate ? EventismTheme.primary : EventismTheme.textSecondary,
+                fontWeight: hasDate ? FontWeight.w500 : FontWeight.w400,
+              ),
+            ),
+            if (onClear != null) ...[
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: onClear,
+                child: Icon(
+                  Icons.close,
+                  size: 16,
+                  color: EventismTheme.textMuted,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
     );
   }
 

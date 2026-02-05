@@ -5,6 +5,7 @@ import '../features/browse/browse_page.dart';
 import '../features/map/map_page.dart';
 import '../features/calendar/calendar_page.dart';
 import '../features/event_detail/event_detail_page.dart';
+import '../features/about/about_page.dart';
 import '../shared/widgets/shell_scaffold.dart';
 
 final router = GoRouter(
@@ -48,6 +49,13 @@ final router = GoRouter(
             child: EventDetailPage(
               eventId: state.pathParameters['id']!,
             ),
+          ),
+        ),
+        GoRoute(
+          path: '/about',
+          name: 'about',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: AboutPage(),
           ),
         ),
       ],

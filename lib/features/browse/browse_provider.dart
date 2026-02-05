@@ -10,6 +10,7 @@ class BrowseFilters {
   final String? city;
   final DateTime? startDate;
   final DateTime? endDate;
+  final bool acceptingVendors;
   final int pageSize;
   final int page;
 
@@ -19,6 +20,7 @@ class BrowseFilters {
     this.city,
     this.startDate,
     this.endDate,
+    this.acceptingVendors = false,
     this.pageSize = AppConstants.defaultPageSize,
     this.page = 1,
   });
@@ -29,6 +31,7 @@ class BrowseFilters {
     String? city,
     DateTime? startDate,
     DateTime? endDate,
+    bool? acceptingVendors,
     int? pageSize,
     int? page,
   }) {
@@ -38,6 +41,7 @@ class BrowseFilters {
       city: city ?? this.city,
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
+      acceptingVendors: acceptingVendors ?? this.acceptingVendors,
       pageSize: pageSize ?? this.pageSize,
       page: page ?? this.page,
     );
@@ -48,7 +52,8 @@ class BrowseFilters {
       tags.isNotEmpty ||
       (city != null && city!.isNotEmpty) ||
       startDate != null ||
-      endDate != null;
+      endDate != null ||
+      acceptingVendors;
 }
 
 class BrowseStateNotifier extends StateNotifier<BrowseFilters> {
@@ -74,6 +79,10 @@ class BrowseStateNotifier extends StateNotifier<BrowseFilters> {
 
   void setDateRange(DateTime? start, DateTime? end) {
     state = state.copyWith(startDate: start, endDate: end, page: 1);
+  }
+
+  void setAcceptingVendors(bool value) {
+    state = state.copyWith(acceptingVendors: value, page: 1);
   }
 
   void setPageSize(int size) {
@@ -116,13 +125,18 @@ final browseEventsProvider = FutureProvider<BrowseResult>((ref) async {
   final filters = ref.watch(browseStateProvider);
   final repository = ref.watch(eventRepositoryProvider);
 
-  final allEvents = await repository.filterEvents(
+  var allEvents = await repository.filterEvents(
     query: filters.query,
     tags: filters.tags.isNotEmpty ? filters.tags : null,
     city: filters.city,
     startDate: filters.startDate,
     endDate: filters.endDate,
   );
+
+  // Filter by accepting vendors if enabled
+  if (filters.acceptingVendors) {
+    allEvents = allEvents.where((e) => e.acceptsVendors).toList();
+  }
 
   final totalPages = (allEvents.length / filters.pageSize).ceil();
   final start = (filters.page - 1) * filters.pageSize;
