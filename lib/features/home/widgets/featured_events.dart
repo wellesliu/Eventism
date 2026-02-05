@@ -47,7 +47,7 @@ class FeaturedEvents extends ConsumerWidget {
             }
             // Horizontal scrollable carousel
             return SizedBox(
-              height: isMobile ? 280 : 320,
+              height: isMobile ? 260 : 300,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: events.length,
@@ -62,7 +62,7 @@ class FeaturedEvents extends ConsumerWidget {
             );
           },
           loading: () => SizedBox(
-            height: isMobile ? 280 : 320,
+            height: isMobile ? 260 : 300,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: 4,
@@ -102,10 +102,11 @@ class _FeaturedEventCard extends StatelessWidget {
           onTap: () => context.go('/event/${event.id}'),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
             children: [
               // Banner image with gradient overlay
-              Expanded(
-                flex: 3,
+              AspectRatio(
+                aspectRatio: 16 / 9,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -168,69 +169,68 @@ class _FeaturedEventCard extends StatelessWidget {
                 ),
               ),
               // Content
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(14),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Title
-                      Text(
-                        event.name,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 8),
-                      // Location
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            size: 14,
-                            color: EventismTheme.textMuted,
+              Padding(
+                padding: const EdgeInsets.all(14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Title
+                    Text(
+                      event.name,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
                           ),
-                          const SizedBox(width: 4),
-                          Expanded(
-                            child: Text(
-                              event.locationShort,
-                              style: Theme.of(context).textTheme.bodySmall,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      // Tags
-                      if (event.tags.isNotEmpty)
-                        Wrap(
-                          spacing: 6,
-                          children: event.tags.take(2).map((tag) {
-                            return Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: EventismTheme.primary.withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                tag,
-                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                      color: EventismTheme.primary,
-                                      fontSize: 10,
-                                    ),
-                              ),
-                            );
-                          }).toList(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 6),
+                    // Location
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on_outlined,
+                          size: 14,
+                          color: EventismTheme.textMuted,
                         ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            event.locationShort,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Tags
+                    if (event.tags.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 6,
+                        children: event.tags.take(2).map((tag) {
+                          return Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: EventismTheme.primary.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              tag,
+                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                    color: EventismTheme.primary,
+                                    fontSize: 10,
+                                  ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ],
-                  ),
+                  ],
                 ),
               ),
             ],

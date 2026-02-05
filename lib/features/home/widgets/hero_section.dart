@@ -1,12 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
 import 'search_bar.dart';
 
-class HeroSection extends StatelessWidget {
+class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
+
+  @override
+  State<HeroSection> createState() => _HeroSectionState();
+}
+
+class _HeroSectionState extends State<HeroSection> {
+  DateTime? _startDate;
+  DateTime? _endDate;
+  bool _acceptingVendors = false;
+  final _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _navigateToSearch() {
+    final params = <String, String>{};
+    if (_searchController.text.isNotEmpty) {
+      params['q'] = _searchController.text;
+    }
+    if (_startDate != null) {
+      params['start'] = _startDate!.toIso8601String().split('T')[0];
+    }
+    if (_endDate != null) {
+      params['end'] = _endDate!.toIso8601String().split('T')[0];
+    }
+    if (_acceptingVendors) {
+      params['vendors'] = 'true';
+    }
+
+    final queryString = params.entries.map((e) => '${e.key}=${e.value}').join('&');
+    context.go('/browse${queryString.isNotEmpty ? '?$queryString' : ''}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +182,7 @@ class HeroSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 TextField(
+                  controller: _searchController,
                   decoration: InputDecoration(
                     hintText: 'Search events...',
                     prefixIcon: const Icon(Icons.search),
@@ -156,43 +193,103 @@ class HeroSection extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                   ),
-                  onSubmitted: (query) {
-                    if (context.mounted) {
-                      context.go('/browse?q=$query');
-                    }
-                  },
+                  onSubmitted: (_) => _navigateToSearch(),
                 ),
                 const SizedBox(height: 12),
+                // Date filters
                 Row(
                   children: [
                     Expanded(
-                      child: _buildQuickFilter(
+                      child: _buildDateButton(
                         context,
-                        icon: Icons.calendar_today,
-                        label: 'This Week',
-                        onTap: () => context.go('/browse'),
+                        label: 'Start Date',
+                        date: _startDate,
+                        onTap: () async {
+                          final date = await showDatePicker(
+                            context: context,
+                            initialDate: _startDate ?? DateTime.now(),
+                            firstDate: DateTime.now().subtract(const Duration(days: 30)),
+                            lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+                          );
+                          if (date != null) {
+                            setState(() => _startDate = date);
+                          }
+                        },
                       ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: _buildQuickFilter(
+                      child: _buildDateButton(
                         context,
-                        icon: Icons.location_on,
-                        label: 'Near Me',
-                        onTap: () => context.go('/map'),
+                        label: 'End Date',
+                        date: _endDate,
+                        onTap: () async {
+                          final date = await showDatePicker(
+                            context: context,
+                            initialDate: _endDate ?? (_startDate ?? DateTime.now()).add(const Duration(days: 30)),
+                            firstDate: _startDate ?? DateTime.now().subtract(const Duration(days: 30)),
+                            lastDate: DateTime.now().add(const Duration(days: 365 * 2)),
+                          );
+                          if (date != null) {
+                            setState(() => _endDate = date);
+                          }
+                        },
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 12),
+                // Accepting vendors checkbox
+                InkWell(
+                  onTap: () => setState(() => _acceptingVendors = !_acceptingVendors),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: _acceptingVendors
+                          ? EventismTheme.success.withValues(alpha: 0.1)
+                          : EventismTheme.background,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: _acceptingVendors
+                            ? EventismTheme.success
+                            : Colors.transparent,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          _acceptingVendors ? Icons.check_box : Icons.check_box_outline_blank,
+                          size: 20,
+                          color: _acceptingVendors ? EventismTheme.success : EventismTheme.textMuted,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Accepting Vendors',
+                          style: TextStyle(
+                            color: _acceptingVendors ? EventismTheme.success : EventismTheme.textSecondary,
+                            fontWeight: _acceptingVendors ? FontWeight.w500 : FontWeight.w400,
+                          ),
+                        ),
+                        const Spacer(),
+                        Icon(
+                          Icons.storefront,
+                          size: 18,
+                          color: _acceptingVendors ? EventismTheme.success : EventismTheme.textMuted,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
-                    onPressed: () => context.go('/browse'),
+                    onPressed: _navigateToSearch,
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    child: const Text('Browse All Events'),
+                    child: const Text('Search Events'),
                   ),
                 ),
               ],
@@ -200,6 +297,46 @@ class HeroSection extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildDateButton(
+    BuildContext context, {
+    required String label,
+    required DateTime? date,
+    required VoidCallback onTap,
+  }) {
+    final dateFormat = DateFormat('MMM d');
+    final hasDate = date != null;
+
+    return Material(
+      color: hasDate ? EventismTheme.primary.withValues(alpha: 0.1) : EventismTheme.background,
+      borderRadius: BorderRadius.circular(10),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.calendar_today,
+                size: 16,
+                color: hasDate ? EventismTheme.primary : EventismTheme.textMuted,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                hasDate ? dateFormat.format(date) : label,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: hasDate ? EventismTheme.primary : EventismTheme.textSecondary,
+                      fontWeight: hasDate ? FontWeight.w500 : FontWeight.w400,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
