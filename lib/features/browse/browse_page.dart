@@ -72,9 +72,9 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
               Container(
                 padding: EdgeInsets.all(isMobile ? 16 : 24),
                 decoration: const BoxDecoration(
-                  color: EventsiaTheme.surface,
+                  color: EventismTheme.surface,
                   border: Border(
-                    bottom: BorderSide(color: EventsiaTheme.border),
+                    bottom: BorderSide(color: EventismTheme.border),
                   ),
                 ),
                 child: Column(
@@ -146,7 +146,7 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                             Icon(
                               Icons.search_off,
                               size: 64,
-                              color: EventsiaTheme.textMuted,
+                              color: EventismTheme.textMuted,
                             ),
                             const SizedBox(height: 16),
                             Text(

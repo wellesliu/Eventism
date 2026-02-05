@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EventsiaTheme {
+class EventismTheme {
   // Design System Colors
   static const primary = Color(0xFF7C3AED);
   static const primaryLight = Color(0xFF9F67FF);

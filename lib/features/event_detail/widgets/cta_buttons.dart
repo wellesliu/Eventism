@@ -24,7 +24,7 @@ class CtaButtons extends StatelessWidget {
               icon: const Icon(Icons.confirmation_number),
               label: const Text('Get Tickets'),
               style: FilledButton.styleFrom(
-                backgroundColor: EventsiaTheme.cta,
+                backgroundColor: EventismTheme.cta,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
             ),
@@ -52,7 +52,7 @@ class CtaButtons extends StatelessWidget {
                 icon: const Icon(Icons.store),
                 label: const Text('Apply as Vendor'),
                 style: FilledButton.styleFrom(
-                  backgroundColor: EventsiaTheme.success,
+                  backgroundColor: EventismTheme.success,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
               ),
@@ -93,16 +93,16 @@ class CtaButtons extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: EventsiaTheme.background,
+                color: EventismTheme.background,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundColor: EventsiaTheme.primary.withValues(alpha: 0.1),
+                    backgroundColor: EventismTheme.primary.withValues(alpha: 0.1),
                     child: const Icon(
                       Icons.business,
-                      color: EventsiaTheme.primary,
+                      color: EventismTheme.primary,
                       size: 20,
                     ),
                   ),
@@ -114,7 +114,7 @@ class CtaButtons extends StatelessWidget {
                         Text(
                           'Organized by',
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                color: EventsiaTheme.textMuted,
+                                color: EventismTheme.textMuted,
                               ),
                         ),
                         const SizedBox(height: 2),
@@ -147,7 +147,7 @@ class CtaButtons extends StatelessWidget {
         title: const Text('Coming Soon'),
         content: Text(
           '$feature functionality will be available soon. '
-          'This is a demo version of Eventsia.',
+          'This is a demo version of Eventism.',
         ),
         actions: [
           TextButton(

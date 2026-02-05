@@ -103,7 +103,7 @@ class _PageButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Material(
-        color: isSelected ? EventsiaTheme.primary : Colors.transparent,
+        color: isSelected ? EventismTheme.primary : Colors.transparent,
         borderRadius: BorderRadius.circular(8),
         child: InkWell(
           onTap: isSelected ? null : onTap,
@@ -115,7 +115,7 @@ class _PageButton extends StatelessWidget {
             child: Text(
               '$page',
               style: TextStyle(
-                color: isSelected ? Colors.white : EventsiaTheme.textPrimary,
+                color: isSelected ? Colors.white : EventismTheme.textPrimary,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),

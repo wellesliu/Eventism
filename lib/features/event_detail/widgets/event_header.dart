@@ -94,8 +94,8 @@ class EventHeader extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            EventsiaTheme.primary,
-            EventsiaTheme.primaryDark,
+            EventismTheme.primary,
+            EventismTheme.primaryDark,
           ],
         ),
       ),

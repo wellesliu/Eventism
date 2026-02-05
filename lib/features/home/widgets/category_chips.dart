@@ -39,10 +39,10 @@ class CategoryChips extends ConsumerWidget {
               children: displayTags.map((tag) {
                 return ActionChip(
                   label: Text(tag),
-                  backgroundColor: EventsiaTheme.surface,
-                  side: const BorderSide(color: EventsiaTheme.border),
+                  backgroundColor: EventismTheme.surface,
+                  side: const BorderSide(color: EventismTheme.border),
                   labelStyle: const TextStyle(
-                    color: EventsiaTheme.textPrimary,
+                    color: EventismTheme.textPrimary,
                   ),
                   onPressed: () {
                     context.go('/browse?tag=${Uri.encodeComponent(tag)}');
@@ -79,7 +79,7 @@ class _SkeletonChip extends StatelessWidget {
       width: 80,
       height: 36,
       decoration: BoxDecoration(
-        color: EventsiaTheme.border,
+        color: EventismTheme.border,
         borderRadius: BorderRadius.circular(20),
       ),
     );

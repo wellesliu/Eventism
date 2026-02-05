@@ -65,12 +65,12 @@ class FilterSidebar extends ConsumerWidget {
                     onSelected: (_) {
                       ref.read(browseStateProvider.notifier).toggleTag(tag);
                     },
-                    selectedColor: EventsiaTheme.primary.withValues(alpha: 0.2),
-                    checkmarkColor: EventsiaTheme.primary,
+                    selectedColor: EventismTheme.primary.withValues(alpha: 0.2),
+                    checkmarkColor: EventismTheme.primary,
                     labelStyle: TextStyle(
                       color: isSelected
-                          ? EventsiaTheme.primary
-                          : EventsiaTheme.textPrimary,
+                          ? EventismTheme.primary
+                          : EventismTheme.textPrimary,
                       fontSize: 13,
                     ),
                   );
@@ -199,9 +199,9 @@ class FilterSidebar extends ConsumerWidget {
     if (compact) {
       return Container(
         decoration: BoxDecoration(
-          color: EventsiaTheme.surface,
+          color: EventismTheme.surface,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: EventsiaTheme.border),
+          border: Border.all(color: EventismTheme.border),
         ),
         child: content,
       );
@@ -209,9 +209,9 @@ class FilterSidebar extends ConsumerWidget {
 
     return Container(
       decoration: const BoxDecoration(
-        color: EventsiaTheme.surface,
+        color: EventismTheme.surface,
         border: Border(
-          right: BorderSide(color: EventsiaTheme.border),
+          right: BorderSide(color: EventismTheme.border),
         ),
       ),
       child: content,

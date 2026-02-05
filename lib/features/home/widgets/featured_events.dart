@@ -122,13 +122,13 @@ class _FeaturedEventCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: EventsiaTheme.primary.withValues(alpha: 0.1),
+                          color: EventismTheme.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
                           dateFormat.format(event.startDateTime!),
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                color: EventsiaTheme.primary,
+                                color: EventismTheme.primary,
                                 fontWeight: FontWeight.w600,
                               ),
                         ),
@@ -141,14 +141,14 @@ class _FeaturedEventCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 8),
                     // Location
                     Row(
                       children: [
                         const Icon(
                           Icons.location_on_outlined,
                           size: 14,
-                          color: EventsiaTheme.textMuted,
+                          color: EventismTheme.textMuted,
                         ),
                         const SizedBox(width: 4),
                         Expanded(
@@ -173,12 +173,12 @@ class _FeaturedEventCard extends StatelessWidget {
 
   Widget _buildPlaceholder() {
     return Container(
-      color: EventsiaTheme.primary.withValues(alpha: 0.1),
+      color: EventismTheme.primary.withValues(alpha: 0.1),
       child: const Center(
         child: Icon(
           Icons.event,
           size: 40,
-          color: EventsiaTheme.primary,
+          color: EventismTheme.primary,
         ),
       ),
     );
@@ -197,7 +197,7 @@ class _SkeletonCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 16 / 9,
             child: Container(
-              color: EventsiaTheme.border,
+              color: EventismTheme.border,
             ),
           ),
           Expanded(
@@ -210,7 +210,7 @@ class _SkeletonCard extends StatelessWidget {
                     width: 80,
                     height: 20,
                     decoration: BoxDecoration(
-                      color: EventsiaTheme.border,
+                      color: EventismTheme.border,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),
@@ -219,7 +219,7 @@ class _SkeletonCard extends StatelessWidget {
                     width: double.infinity,
                     height: 16,
                     decoration: BoxDecoration(
-                      color: EventsiaTheme.border,
+                      color: EventismTheme.border,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),
@@ -228,7 +228,7 @@ class _SkeletonCard extends StatelessWidget {
                     width: 120,
                     height: 16,
                     decoration: BoxDecoration(
-                      color: EventsiaTheme.border,
+                      color: EventismTheme.border,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),

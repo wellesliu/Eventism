@@ -24,7 +24,7 @@ class EventMarker extends StatelessWidget {
         width: isSelected ? 44 : 36,
         height: isSelected ? 44 : 36,
         decoration: BoxDecoration(
-          color: isSelected ? EventsiaTheme.cta : EventsiaTheme.primary,
+          color: isSelected ? EventismTheme.cta : EventismTheme.primary,
           shape: BoxShape.circle,
           border: Border.all(
             color: Colors.white,

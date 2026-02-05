@@ -7,11 +7,11 @@ void main() {
   testWidgets('App renders home page', (WidgetTester tester) async {
     await tester.pumpWidget(
       const ProviderScope(
-        child: EventsiaApp(),
+        child: EventismApp(),
       ),
     );
 
     // Verify app title is shown
-    expect(find.text('Eventsia'), findsWidgets);
+    expect(find.text('Eventism'), findsWidgets);
   });
 }

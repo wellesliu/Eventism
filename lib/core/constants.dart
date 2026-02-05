@@ -1,5 +1,5 @@
 class AppConstants {
-  static const appName = 'Eventsia';
+  static const appName = 'Eventism';
   static const appTagline = 'Discover Amazing Events Near You';
 
   // Pagination

@@ -31,7 +31,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: EventsiaTheme.surface,
+        color: EventismTheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -48,7 +48,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
               controller: _controller,
               decoration: InputDecoration(
                 hintText: 'Search events, categories, locations...',
-                prefixIcon: const Icon(Icons.search, color: EventsiaTheme.textMuted),
+                prefixIcon: const Icon(Icons.search, color: EventismTheme.textMuted),
                 border: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,
@@ -62,7 +62,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
             child: FilledButton(
               onPressed: _submit,
               style: FilledButton.styleFrom(
-                backgroundColor: EventsiaTheme.cta,
+                backgroundColor: EventismTheme.cta,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               ),
               child: const Text('Search'),

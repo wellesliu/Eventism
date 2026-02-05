@@ -46,7 +46,7 @@ class EventCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: EventsiaTheme.primary,
+                          color: EventismTheme.primary,
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
@@ -76,13 +76,13 @@ class EventCard extends StatelessWidget {
                           Icon(
                             Icons.calendar_today,
                             size: 14,
-                            color: EventsiaTheme.primary,
+                            color: EventismTheme.primary,
                           ),
                           const SizedBox(width: 4),
                           Text(
                             dateFormat.format(event.startDateTime!),
                             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  color: EventsiaTheme.primary,
+                                  color: EventismTheme.primary,
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
@@ -96,14 +96,14 @@ class EventCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 8),
                     // Location
                     Row(
                       children: [
                         const Icon(
                           Icons.location_on_outlined,
                           size: 14,
-                          color: EventsiaTheme.textMuted,
+                          color: EventismTheme.textMuted,
                         ),
                         const SizedBox(width: 4),
                         Expanded(
@@ -126,7 +126,7 @@ class EventCard extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: EventsiaTheme.success.withValues(alpha: 0.1),
+                            color: EventismTheme.success.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(
@@ -135,13 +135,13 @@ class EventCard extends StatelessWidget {
                               Icon(
                                 Icons.store,
                                 size: 12,
-                                color: EventsiaTheme.success,
+                                color: EventismTheme.success,
                               ),
                               const SizedBox(width: 4),
                               Text(
                                 'Vendors welcome',
                                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                      color: EventsiaTheme.success,
+                                      color: EventismTheme.success,
                                     ),
                               ),
                             ],
@@ -160,12 +160,12 @@ class EventCard extends StatelessWidget {
 
   Widget _buildPlaceholder() {
     return Container(
-      color: EventsiaTheme.primary.withValues(alpha: 0.1),
+      color: EventismTheme.primary.withValues(alpha: 0.1),
       child: const Center(
         child: Icon(
           Icons.event,
           size: 40,
-          color: EventsiaTheme.primary,
+          color: EventismTheme.primary,
         ),
       ),
     );

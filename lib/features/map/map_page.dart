@@ -66,7 +66,7 @@ class _MapPageState extends ConsumerState<MapPage> {
           child: Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: EventsiaTheme.surface,
+              color: EventismTheme.surface,
               borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
@@ -167,11 +167,11 @@ class _MapPageState extends ConsumerState<MapPage> {
                       fit: BoxFit.cover,
                       errorBuilder: (_, __, ___) => Container(
                         height: 120,
-                        color: EventsiaTheme.primary.withValues(alpha: 0.1),
+                        color: EventismTheme.primary.withValues(alpha: 0.1),
                         child: const Icon(
                           Icons.event,
                           size: 40,
-                          color: EventsiaTheme.primary,
+                          color: EventismTheme.primary,
                         ),
                       ),
                     ),
@@ -212,7 +212,7 @@ class _MapPageState extends ConsumerState<MapPage> {
                       const Icon(
                         Icons.location_on_outlined,
                         size: 16,
-                        color: EventsiaTheme.textMuted,
+                        color: EventismTheme.textMuted,
                       ),
                       const SizedBox(width: 4),
                       Expanded(

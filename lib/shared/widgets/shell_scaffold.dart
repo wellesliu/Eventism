@@ -42,7 +42,7 @@ class ShellScaffold extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              color: EventsiaTheme.primary,
+              color: EventismTheme.primary,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,12 +80,12 @@ class ShellScaffold extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: isSelected ? EventsiaTheme.primary : EventsiaTheme.textSecondary,
+        color: isSelected ? EventismTheme.primary : EventismTheme.textSecondary,
       ),
       title: Text(
         label,
         style: TextStyle(
-          color: isSelected ? EventsiaTheme.primary : EventsiaTheme.textPrimary,
+          color: isSelected ? EventismTheme.primary : EventismTheme.textPrimary,
           fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
         ),
       ),
@@ -99,7 +99,7 @@ class ShellScaffold extends StatelessWidget {
 
   Widget _buildDesktopNav(BuildContext context) {
     return Container(
-      color: EventsiaTheme.surface,
+      color: EventismTheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       child: Row(
         children: [
@@ -112,7 +112,7 @@ class ShellScaffold extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: EventsiaTheme.primary,
+                    color: EventismTheme.primary,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(
@@ -144,7 +144,7 @@ class ShellScaffold extends StatelessWidget {
             icon: const Icon(Icons.add, size: 20),
             label: const Text('Create Event'),
             style: FilledButton.styleFrom(
-              backgroundColor: EventsiaTheme.cta,
+              backgroundColor: EventismTheme.cta,
             ),
           ),
         ],
@@ -163,7 +163,7 @@ class ShellScaffold extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: isSelected ? EventsiaTheme.primary : EventsiaTheme.textSecondary,
+            color: isSelected ? EventismTheme.primary : EventismTheme.textSecondary,
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
             fontSize: 16,
           ),

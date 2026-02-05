@@ -48,7 +48,7 @@ class EventInfo extends StatelessWidget {
                 subtitle: event.vendorApplicationDeadline != null
                     ? 'Deadline: ${event.vendorApplicationDeadline}'
                     : null,
-                accentColor: EventsiaTheme.success,
+                accentColor: EventismTheme.success,
               ),
           ],
         ),
@@ -71,7 +71,7 @@ class EventInfo extends StatelessWidget {
           Text(
             'No description available.',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: EventsiaTheme.textMuted,
+                  color: EventismTheme.textMuted,
                   fontStyle: FontStyle.italic,
                 ),
           ),
@@ -90,9 +90,9 @@ class EventInfo extends StatelessWidget {
             children: event.tags.map((tag) {
               return Chip(
                 label: Text(tag),
-                backgroundColor: EventsiaTheme.primary.withValues(alpha: 0.1),
+                backgroundColor: EventismTheme.primary.withValues(alpha: 0.1),
                 labelStyle: const TextStyle(
-                  color: EventsiaTheme.primary,
+                  color: EventismTheme.primary,
                 ),
                 side: BorderSide.none,
               );
@@ -121,15 +121,15 @@ class _InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = accentColor ?? EventsiaTheme.primary;
+    final color = accentColor ?? EventismTheme.primary;
 
     return Container(
       constraints: const BoxConstraints(minWidth: 200, maxWidth: 300),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: EventsiaTheme.surface,
+        color: EventismTheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: EventsiaTheme.border),
+        border: Border.all(color: EventismTheme.border),
       ),
       child: Row(
         children: [
@@ -154,7 +154,7 @@ class _InfoCard extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: EventsiaTheme.textMuted,
+                        color: EventismTheme.textMuted,
                       ),
                 ),
                 const SizedBox(height: 2),

@@ -37,7 +37,7 @@ class EventDetailPage extends ConsumerWidget {
                   Icon(
                     Icons.event_busy,
                     size: 64,
-                    color: EventsiaTheme.textMuted,
+                    color: EventismTheme.textMuted,
                   ),
                   const SizedBox(height: 16),
                   Text(

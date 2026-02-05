@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'core/router.dart';
 import 'core/theme.dart';
 
-class EventsiaApp extends StatelessWidget {
-  const EventsiaApp({super.key});
+class EventismApp extends StatelessWidget {
+  const EventismApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Eventsia',
+      title: 'Eventism',
       debugShowCheckedModeBanner: false,
-      theme: EventsiaTheme.theme,
+      theme: EventismTheme.theme,
       routerConfig: router,
     );
   }

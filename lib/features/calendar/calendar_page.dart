@@ -82,7 +82,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
         Expanded(
           flex: 2,
           child: Container(
-            color: EventsiaTheme.surface,
+            color: EventismTheme.surface,
             child: _buildCalendar(eventMap),
           ),
         ),
@@ -121,21 +121,21 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
-        weekendTextStyle: const TextStyle(color: EventsiaTheme.textPrimary),
+        weekendTextStyle: const TextStyle(color: EventismTheme.textPrimary),
         todayDecoration: BoxDecoration(
-          color: EventsiaTheme.primary.withValues(alpha: 0.2),
+          color: EventismTheme.primary.withValues(alpha: 0.2),
           shape: BoxShape.circle,
         ),
         todayTextStyle: const TextStyle(
-          color: EventsiaTheme.primary,
+          color: EventismTheme.primary,
           fontWeight: FontWeight.bold,
         ),
         selectedDecoration: const BoxDecoration(
-          color: EventsiaTheme.primary,
+          color: EventismTheme.primary,
           shape: BoxShape.circle,
         ),
         markerDecoration: const BoxDecoration(
-          color: EventsiaTheme.cta,
+          color: EventismTheme.cta,
           shape: BoxShape.circle,
         ),
         markerSize: 6,
@@ -143,14 +143,14 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
       ),
       headerStyle: HeaderStyle(
         formatButtonDecoration: BoxDecoration(
-          border: Border.all(color: EventsiaTheme.border),
+          border: Border.all(color: EventismTheme.border),
           borderRadius: BorderRadius.circular(8),
         ),
         titleCentered: true,
         titleTextStyle: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: EventsiaTheme.textPrimary,
+          color: EventismTheme.textPrimary,
         ),
       ),
       calendarBuilders: CalendarBuilders(
@@ -167,7 +167,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                   height: 6,
                   margin: const EdgeInsets.symmetric(horizontal: 1),
                   decoration: const BoxDecoration(
-                    color: EventsiaTheme.cta,
+                    color: EventismTheme.cta,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -190,13 +190,13 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
             Icon(
               Icons.calendar_today,
               size: 48,
-              color: EventsiaTheme.textMuted,
+              color: EventismTheme.textMuted,
             ),
             const SizedBox(height: 16),
             Text(
               'Select a date',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: EventsiaTheme.textMuted,
+                    color: EventismTheme.textMuted,
                   ),
             ),
             const SizedBox(height: 8),
@@ -217,13 +217,13 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
             Icon(
               Icons.event_busy,
               size: 48,
-              color: EventsiaTheme.textMuted,
+              color: EventismTheme.textMuted,
             ),
             const SizedBox(height: 16),
             Text(
               'No events',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: EventsiaTheme.textMuted,
+                    color: EventismTheme.textMuted,
                   ),
             ),
             const SizedBox(height: 8),
@@ -280,7 +280,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: EventsiaTheme.primary.withValues(alpha: 0.1),
+                            color: EventismTheme.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
@@ -288,7 +288,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                                 ? dateFormat.format(event.startDateTime!)
                                 : '--:--',
                             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  color: EventsiaTheme.primary,
+                                  color: EventismTheme.primary,
                                   fontWeight: FontWeight.w600,
                                 ),
                             textAlign: TextAlign.center,
@@ -318,7 +318,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                         ),
                         const Icon(
                           Icons.chevron_right,
-                          color: EventsiaTheme.textMuted,
+                          color: EventismTheme.textMuted,
                         ),
                       ],
                     ),

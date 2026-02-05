@@ -22,9 +22,9 @@ class EventDayCell extends StatelessWidget {
       margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: isSelected
-            ? EventsiaTheme.primary
+            ? EventismTheme.primary
             : isToday
-                ? EventsiaTheme.primary.withValues(alpha: 0.1)
+                ? EventismTheme.primary.withValues(alpha: 0.1)
                 : null,
         borderRadius: BorderRadius.circular(8),
       ),
@@ -37,8 +37,8 @@ class EventDayCell extends StatelessWidget {
               color: isSelected
                   ? Colors.white
                   : isToday
-                      ? EventsiaTheme.primary
-                      : EventsiaTheme.textPrimary,
+                      ? EventismTheme.primary
+                      : EventismTheme.textPrimary,
               fontWeight: isToday || isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
           ),
@@ -52,7 +52,7 @@ class EventDayCell extends StatelessWidget {
                   height: 4,
                   margin: const EdgeInsets.symmetric(horizontal: 1),
                   decoration: BoxDecoration(
-                    color: isSelected ? Colors.white : EventsiaTheme.cta,
+                    color: isSelected ? Colors.white : EventismTheme.cta,
                     shape: BoxShape.circle,
                   ),
                 ),
