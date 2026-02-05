@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventismTheme {
-  // Design System Colors
-  static const primary = Color(0xFF7C3AED);
-  static const primaryLight = Color(0xFF9F67FF);
-  static const primaryDark = Color(0xFF5B21B6);
+  // Design System Colors (Pink gradient theme from logo)
+  static const primary = Color(0xFFEC4899);
+  static const primaryLight = Color(0xFFF472B6);
+  static const primaryDark = Color(0xFFDB2777);
   static const cta = Color(0xFFF97316);
   static const ctaHover = Color(0xFFEA580C);
-  static const background = Color(0xFFFAF5FF);
+  static const background = Color(0xFFFDF2F8);
   static const surface = Colors.white;
-  static const textPrimary = Color(0xFF4C1D95);
+  static const textPrimary = Color(0xFF831843);
   static const textSecondary = Color(0xFF6B7280);
   static const textMuted = Color(0xFF9CA3AF);
   static const border = Color(0xFFE5E7EB);

@@ -23,8 +23,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9679,
+    "longitude": 151.1014
   },
   {
     "id": "01efe035-0c6e-4758-941c-84fe02964bd0",
@@ -51,8 +51,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9167,
+    "longitude": 150.9167
   },
   {
     "id": "04b29c98-da3d-417c-824d-0d81f9fa6fc8",
@@ -79,8 +79,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -34.9285,
-    "longitude": 138.6007
+    "latitude": -34.9459,
+    "longitude": 138.5786
   },
   {
     "id": "0631f9ba-5e87-4e99-b5b0-19dd5f6321e5",
@@ -132,8 +132,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "07787d49-4dac-41d4-b58b-608448dca977",
@@ -160,8 +160,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -35.2809,
-    "longitude": 149.13
+    "latitude": -31.8833,
+    "longitude": 115.8167
   },
   {
     "id": "090e0e89-3ea4-411b-86c8-79b5ea3e699c",
@@ -244,8 +244,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "0c491046-2c7a-494e-8915-52331e3c91c0",
@@ -298,8 +298,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4747,
+    "longitude": 153.0266
   },
   {
     "id": "0fab6102-1b9d-4023-8674-18a6915464a1",
@@ -323,8 +323,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0317,
+    "longitude": 151.0577
   },
   {
     "id": "112d3f06-377a-4203-be1e-0d8fe3200444",
@@ -351,8 +351,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "13e6e820-99d8-4e82-bd16-1db661901d32",
@@ -405,8 +405,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8768,
+    "longitude": 151.1045
   },
   {
     "id": "17e27091-2ffd-48f9-ac26-1dc5308de652",
@@ -461,8 +461,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "1eaf85c4-2bb4-49ac-968e-b899fdc5b745",
@@ -489,8 +489,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "1f9235b5-b46c-4960-a060-0ae123b7105f",
@@ -517,8 +517,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "208b37bd-244f-4b07-bba3-b7007ed89046",
@@ -570,8 +570,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8151,
+    "longitude": 151.1021
   },
   {
     "id": "25b3d977-7d5f-4888-8b43-47e20b426e4a",
@@ -623,8 +623,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "288d07fd-ebe3-4223-a086-e406c714368e",
@@ -649,8 +649,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "296fdde4-5e42-42b7-ad56-d362cbea75f4",
@@ -677,8 +677,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8788,
+    "longitude": 151.1868
   },
   {
     "id": "2aac3292-ed14-4983-9399-fb9835c2a136",
@@ -730,8 +730,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0011,
+    "longitude": 150.7466
   },
   {
     "id": "2e4e4689-c1f2-42c2-8870-5953c019fc47",
@@ -758,8 +758,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "3047f456-ec16-4a40-b11d-3d9da5a57f8d",
@@ -786,8 +786,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "306cc084-cc93-4a03-99fc-0401f6f82f78",
@@ -841,8 +841,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "32ddeaf7-f7e0-4cb6-babc-98e96a555dc8",
@@ -920,8 +920,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8792,
+    "longitude": 145.1649
   },
   {
     "id": "392354fb-44e4-4c50-9cc2-1254517bde9a",
@@ -948,8 +948,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4747,
+    "longitude": 153.0266
   },
   {
     "id": "394a4de5-c001-4076-92a4-43f7120ca314",
@@ -973,8 +973,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "397f470a-4835-4350-b55b-0974b2379e87",
@@ -1029,8 +1029,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.975,
+    "longitude": 115.8917
   },
   {
     "id": "3d0ef551-9f0f-4007-a082-3fb5262a08de",
@@ -1054,8 +1054,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "3dc01497-f8aa-4334-8cae-e85989c3fb5c",
@@ -1082,8 +1082,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "418c3fce-e376-45ff-9dfb-ae862898fa6b",
@@ -1110,8 +1110,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.845,
+    "longitude": 151.068
   },
   {
     "id": "44fb549c-6fd8-480a-bfec-397b2f640186",
@@ -1166,8 +1166,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "4694a0a7-4e56-47ed-b822-a73d6b1a4c69",
@@ -1221,8 +1221,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.9003,
+    "longitude": 144.6608
   },
   {
     "id": "49541d70-de7d-4bea-bf52-0d86767878a1",
@@ -1249,8 +1249,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -32.9283,
-    "longitude": 151.7817
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "49aa3530-2342-4d61-b6a3-4b1839d04d58",
@@ -1277,8 +1277,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8788,
+    "longitude": 151.1868
   },
   {
     "id": "4acbadc6-fdb2-4a1e-8e39-9cd2f7814ed7",
@@ -1302,8 +1302,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "4b22b433-334b-4f6f-8fc1-651198ac495f",
@@ -1352,8 +1352,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "4bca56b8-6746-421e-a82c-6136ecfbac9a",
@@ -1378,8 +1378,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "4d921fcc-4d2b-4ed1-b0dc-e2627293ddec",
@@ -1406,8 +1406,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9167,
+    "longitude": 150.9167
   },
   {
     "id": "507b13bf-7f30-4dbe-b79d-628b936c72fa",
@@ -1459,8 +1459,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8146,
+    "longitude": 144.9426
   },
   {
     "id": "5abb6bda-d5bb-42e2-a31e-ea2216ba6b70",
@@ -1514,8 +1514,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -34.9285,
-    "longitude": 138.6007
+    "latitude": -34.9459,
+    "longitude": 138.5786
   },
   {
     "id": "5b86556f-5788-48bc-b56b-929a65c37def",
@@ -1541,8 +1541,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9178,
+    "longitude": 151.0331
   },
   {
     "id": "625e7973-bde2-4ec5-a5a5-9b298b933fc7",
@@ -1567,8 +1567,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -27.4698,
+    "longitude": 153.0251
   },
   {
     "id": "6677f301-3c33-479b-b169-2bc0bc1c3667",
@@ -1594,8 +1594,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0317,
+    "longitude": 151.0577
   },
   {
     "id": "6776c15e-457e-435c-990a-bd806fda5216",
@@ -1622,8 +1622,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9167,
+    "longitude": 150.9167
   },
   {
     "id": "677a36ff-82b7-4c57-b90a-9a36c367df1c",
@@ -1648,8 +1648,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9667,
+    "longitude": 115.8667
   },
   {
     "id": "679d81f4-5656-4c3b-a7ed-ea684b9c6317",
@@ -1782,8 +1782,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "719e0008-9230-41ba-a968-f7d3a5e8283b",
@@ -1809,8 +1809,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.9178,
+    "longitude": 151.0331
   },
   {
     "id": "77362973-fca7-4c6c-ae86-d8eb929769e8",
@@ -1835,8 +1835,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -27.4698,
+    "longitude": 153.0251
   },
   {
     "id": "79385854-a91e-4576-ba9d-984f1239cab3",
@@ -1863,8 +1863,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "7cdffed8-f232-4888-9687-e3d0665688b3",
@@ -1891,8 +1891,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "8383d0d6-32db-4d5d-bcce-32cdcd315fdd",
@@ -1919,8 +1919,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "845edd52-4e84-4e5b-80b6-7661fe3e3c5d",
@@ -1944,8 +1944,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.9505,
+    "longitude": 115.8605
   },
   {
     "id": "8486dd31-23ff-4bb1-9b0e-e03d169b9a95",
@@ -1971,8 +1971,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "8632ce13-46f6-48de-be25-72ef60cde90d",
@@ -2052,8 +2052,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.845,
+    "longitude": 151.068
   },
   {
     "id": "8abb1b7b-c26f-4741-a655-3de084e2efb9",
@@ -2080,8 +2080,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "8c35bceb-46fa-4fe4-a0de-68e896f4d48f",
@@ -2108,8 +2108,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "8de7ffdf-fbe2-49be-a053-5dee69f5855a",
@@ -2136,8 +2136,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.745,
+    "longitude": 115.7661
   },
   {
     "id": "8df53044-2c17-4110-9818-5bef776b7a69",
@@ -2164,8 +2164,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.7749,
+    "longitude": 144.949
   },
   {
     "id": "8ec28af0-8eec-4f5b-84b6-f194f8ebaeeb",
@@ -2192,8 +2192,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8788,
+    "longitude": 151.1868
   },
   {
     "id": "8f6da013-3e45-4449-adb1-52d49443f74e",
@@ -2248,8 +2248,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.845,
+    "longitude": 151.068
   },
   {
     "id": "9096d2b7-d5de-4ea4-8244-0a16f98abbfa",
@@ -2275,8 +2275,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.6072,
+    "longitude": 150.75
   },
   {
     "id": "916570e4-b145-4f3f-8c69-e7c5f608fd7d",
@@ -2303,8 +2303,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0011,
+    "longitude": 150.7466
   },
   {
     "id": "95703844-cbb7-4ead-b548-160532979367",
@@ -2359,8 +2359,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -28.0167,
-    "longitude": 153.4
+    "latitude": -27.4698,
+    "longitude": 153.0251
   },
   {
     "id": "99a7ff44-ea9b-47e8-9d73-335da7c79a26",
@@ -2384,8 +2384,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "9a404043-7bf2-4c5a-be49-0ddeab305609",
@@ -2410,8 +2410,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.5333,
+    "longitude": 153.0833
   },
   {
     "id": "9ceedcf2-ff61-4cd5-b51e-e10e05f541cc",
@@ -2438,8 +2438,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -34.9285,
-    "longitude": 138.6007
+    "latitude": -34.9459,
+    "longitude": 138.5786
   },
   {
     "id": "9f6bccdc-236e-4125-bd11-7b5c056866f2",
@@ -2464,8 +2464,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -21.1439,
+    "longitude": 149.1869
   },
   {
     "id": "9f93942e-8a33-485d-8cfc-05313a2d8954",
@@ -2492,8 +2492,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "a0b287b4-96a7-4c3c-86aa-225b88fdfe79",
@@ -2544,8 +2544,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -27.6167,
+    "longitude": 152.7667
   },
   {
     "id": "a21e29cb-e54c-4686-bd3b-58765c180e61",
@@ -2572,8 +2572,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.065,
+    "longitude": 150.8142
   },
   {
     "id": "a4b10b09-8496-48a9-843f-ad33a859b8c0",
@@ -2599,8 +2599,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -32.0569,
+    "longitude": 115.7439
   },
   {
     "id": "a4c83b90-c706-431d-8a34-ede6f7da9ed1",
@@ -2681,8 +2681,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.9505,
+    "longitude": 115.8605
   },
   {
     "id": "a62c8b7e-84ba-4259-a14f-74d45a9fe422",
@@ -2707,8 +2707,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.7887,
+    "longitude": 144.9776
   },
   {
     "id": "a815ba05-ece7-40fe-9287-454902ad376c",
@@ -2735,8 +2735,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.975,
+    "longitude": 115.8917
   },
   {
     "id": "ace1ea3e-993b-416d-9057-e7144f8d8379",
@@ -2763,8 +2763,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4429,
+    "longitude": 153.035
   },
   {
     "id": "afe9a053-0c7f-4c6a-8662-b2a5edfff967",
@@ -2791,8 +2791,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "b3582ef1-aae9-42b5-b9e4-456cf804f92f",
@@ -2845,8 +2845,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8768,
+    "longitude": 151.1045
   },
   {
     "id": "b6fa771f-5e1a-4411-9ff5-7881dd119d1f",
@@ -2873,8 +2873,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "b9ffab3b-89ef-49b2-adbf-c72650423ed1",
@@ -2900,8 +2900,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "bd13faf0-1dab-4d30-ac2a-c64d154a4a50",
@@ -2928,8 +2928,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "c10e54d8-a455-434e-8478-18abdbe04c98",
@@ -2956,8 +2956,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4747,
+    "longitude": 153.0266
   },
   {
     "id": "c2549be5-4e7d-44df-8f9e-8b43180abfa4",
@@ -2983,8 +2983,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "c3403249-92cb-4cfe-b25a-ded5afc72eda",
@@ -3007,8 +3007,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4429,
+    "longitude": 153.035
   },
   {
     "id": "c3f0ed48-7f00-4703-a8cd-976f41eae064",
@@ -3035,8 +3035,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -28.0167,
-    "longitude": 153.4
+    "latitude": -28.0156,
+    "longitude": 153.4295
   },
   {
     "id": "c4ef92d7-03fb-42e2-a7be-0d94fb00652d",
@@ -3084,8 +3084,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8676,
+    "longitude": 144.9742
   },
   {
     "id": "c7853830-aa5f-42ad-bec9-02f636466915",
@@ -3112,8 +3112,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.794,
+    "longitude": 144.9667
   },
   {
     "id": "ca0dfef0-f4c4-42fa-9f91-4ebf280ecf41",
@@ -3140,8 +3140,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4747,
+    "longitude": 153.0266
   },
   {
     "id": "cc69d8ea-432a-4d8c-8a8a-57936e488b80",
@@ -3164,8 +3164,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "ce4b0328-fd5e-4a94-8ed1-f21cfde5dcab",
@@ -3191,8 +3191,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -38.1499,
-    "longitude": 144.3618
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "cf2af1cf-8d9f-4dcd-b3c0-2c86d5ece4ed",
@@ -3219,8 +3219,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -37.8136,
-    "longitude": 144.9631
+    "latitude": -37.8265,
+    "longitude": 144.9535
   },
   {
     "id": "cfcb916a-ce98-48b8-b74a-088d88813b48",
@@ -3275,8 +3275,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -31.9505,
-    "longitude": 115.8605
+    "latitude": -31.9577,
+    "longitude": 115.8614
   },
   {
     "id": "d16083f8-3757-407e-9d08-a8e73a1177ea",
@@ -3303,8 +3303,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -27.4698,
-    "longitude": 153.0251
+    "latitude": -27.4429,
+    "longitude": 153.035
   },
   {
     "id": "d1e05034-78d3-43be-930f-7425319264c9",
@@ -3331,8 +3331,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "d41b7ca5-7b6a-4f8d-b826-a58e52edd266",
@@ -3358,8 +3358,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -37.8136,
+    "longitude": 144.9631
   },
   {
     "id": "d6005556-e2e6-433a-b980-1163e72da961",
@@ -3435,8 +3435,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -23.3792,
+    "longitude": 150.51
   },
   {
     "id": "d6adc81a-d36f-421b-ba19-a6ba389903e0",
@@ -3463,8 +3463,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.9505,
+    "longitude": 115.8605
   },
   {
     "id": "d7884e4f-0836-4622-8a16-c63a0fbf67a0",
@@ -3516,8 +3516,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "da34b852-15f3-439b-bb34-a09423d81f8d",
@@ -3543,8 +3543,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8788,
+    "longitude": 151.1868
   },
   {
     "id": "ddbc296d-ec04-4c22-9bd9-13638b216090",
@@ -3565,8 +3565,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0011,
+    "longitude": 150.7466
   },
   {
     "id": "e07a8ba9-f253-415a-b160-372fe0f12f54",
@@ -3592,8 +3592,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.8788,
+    "longitude": 151.1868
   },
   {
     "id": "e1d97823-ac4d-4241-9e54-0b93f299e714",
@@ -3620,8 +3620,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "e522fa79-efa4-4bba-b3ad-3d52905aa976",
@@ -3646,8 +3646,8 @@
     "vendor_requires_approval": true,
     "enable_vendor_form": false,
     "vendor_form_is_public": true,
-    "latitude": null,
-    "longitude": null
+    "latitude": -24.8661,
+    "longitude": 152.3489
   },
   {
     "id": "e71b94b2-bd93-48ea-b90d-517c77aaefb1",
@@ -3674,8 +3674,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -31.975,
+    "longitude": 115.8917
   },
   {
     "id": "e83d3c66-ac27-4ea6-b0a9-72d53a4c4346",
@@ -3729,8 +3729,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -32.0167,
+    "longitude": 115.9333
   },
   {
     "id": "e956ae84-c279-4a07-8787-8ad38f735bc3",
@@ -3757,8 +3757,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "e9e9559b-c453-4bfa-8ec9-3432a62490de",
@@ -3841,8 +3841,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -32.9283,
-    "longitude": 151.7817
+    "latitude": -33.8688,
+    "longitude": 151.2093
   },
   {
     "id": "ee4a4854-8db7-48ca-af5a-53ddbba8d832",
@@ -3868,8 +3868,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -34.9285,
+    "longitude": 138.6007
   },
   {
     "id": "ee871f72-143a-4441-a56f-122961da7b07",
@@ -3896,8 +3896,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.751,
+    "longitude": 150.6942
   },
   {
     "id": "ef753927-051f-48d3-97b3-1fbdf3986e98",
@@ -3924,8 +3924,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -34.0011,
+    "longitude": 150.7466
   },
   {
     "id": "f12eed72-9a73-4809-abf9-206551cf6820",
@@ -3980,8 +3980,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "f61b2055-b73d-4c03-8633-59e803125df4",
@@ -4008,8 +4008,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": null,
-    "longitude": null
+    "latitude": -33.771,
+    "longitude": 150.9063
   },
   {
     "id": "f8f07c7a-2530-4ef5-8a74-76e4c3ed735f",
@@ -4035,8 +4035,8 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -33.8688,
-    "longitude": 151.2093
+    "latitude": -33.8467,
+    "longitude": 151.0628
   },
   {
     "id": "f9314299-eb1c-41ef-b51e-2da06b7e64f2",
@@ -4061,7 +4061,7 @@
     "vendor_requires_approval": false,
     "enable_vendor_form": false,
     "vendor_form_is_public": false,
-    "latitude": -34.9285,
-    "longitude": 138.6007
+    "latitude": -34.9459,
+    "longitude": 138.5786
   }
 ]

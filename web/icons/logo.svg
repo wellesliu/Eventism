@@ -1,0 +1,14 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="minimalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#f472b6" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="4" y="4" width="48" height="48" rx="12" fill="url(#minimalGradient)" />
+  <!-- E letterform as negative space -->
+  <rect x="16" y="12" width="26" height="6" rx="2" fill="white" />
+  <rect x="16" y="25" width="18" height="6" rx="2" fill="white" />
+  <rect x="16" y="38" width="26" height="6" rx="2" fill="white" />
+</svg>
