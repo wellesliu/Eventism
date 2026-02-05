@@ -44,8 +44,10 @@ final router = GoRouter(
         GoRoute(
           path: '/event/:id',
           name: 'eventDetail',
-          builder: (context, state) => EventDetailPage(
-            eventId: state.pathParameters['id']!,
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: EventDetailPage(
+              eventId: state.pathParameters['id']!,
+            ),
           ),
         ),
       ],
