@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'core/router.dart';
@@ -13,6 +14,14 @@ class EventismApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: EventismTheme.theme,
       routerConfig: router,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        scrollbars: true,
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.trackpad,
+        },
+      ),
     );
   }
 }
