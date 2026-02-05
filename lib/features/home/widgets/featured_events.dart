@@ -93,6 +93,7 @@ class _FeaturedEventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dateFormat = DateFormat(AppConstants.dateFormat);
+    final timeFormat = DateFormat(AppConstants.timeFormat);
 
     return SizedBox(
       width: width,
@@ -156,12 +157,33 @@ class _FeaturedEventCard extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: Text(
-                            dateFormat.format(event.startDateTime!),
-                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  color: EventismTheme.primary,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                dateFormat.format(event.startDateTime!),
+                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                      color: EventismTheme.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                '•',
+                                style: TextStyle(
+                                  color: EventismTheme.primary.withValues(alpha: 0.5),
                                   fontWeight: FontWeight.w600,
                                 ),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                timeFormat.format(event.startDateTime!),
+                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                      color: EventismTheme.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

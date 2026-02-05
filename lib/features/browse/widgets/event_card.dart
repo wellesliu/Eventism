@@ -14,6 +14,7 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dateFormat = DateFormat(AppConstants.dateFormat);
+    final timeFormat = DateFormat(AppConstants.timeFormat);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -81,6 +82,20 @@ class EventCard extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             dateFormat.format(event.startDateTime!),
+                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                  color: EventismTheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          const SizedBox(width: 8),
+                          Icon(
+                            Icons.access_time,
+                            size: 14,
+                            color: EventismTheme.primary,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            timeFormat.format(event.startDateTime!),
                             style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                   color: EventismTheme.primary,
                                   fontWeight: FontWeight.w600,
