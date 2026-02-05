@@ -29,6 +29,9 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
       final uri = GoRouterState.of(context).uri;
       final query = uri.queryParameters['q'];
       final tag = uri.queryParameters['tag'];
+      final startParam = uri.queryParameters['start'];
+      final endParam = uri.queryParameters['end'];
+      final vendorsParam = uri.queryParameters['vendors'];
 
       if (query != null) {
         _searchController.text = query;
@@ -36,6 +39,14 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
       }
       if (tag != null) {
         ref.read(browseStateProvider.notifier).toggleTag(tag);
+      }
+      if (startParam != null || endParam != null) {
+        final startDate = startParam != null ? DateTime.tryParse(startParam) : null;
+        final endDate = endParam != null ? DateTime.tryParse(endParam) : null;
+        ref.read(browseStateProvider.notifier).setDateRange(startDate, endDate);
+      }
+      if (vendorsParam == 'true') {
+        ref.read(browseStateProvider.notifier).setAcceptingVendors(true);
       }
     });
   }
