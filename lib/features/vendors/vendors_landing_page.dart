@@ -12,19 +12,17 @@ class VendorsLandingPage extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     final isMobile = Breakpoints.isMobile(width);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          // Hero section
-          _buildHeroSection(context, isMobile),
-          // Value props
-          _buildValueProps(context, isMobile),
-          // How it works
-          _buildHowItWorks(context, isMobile),
-          // CTA section
-          _buildCtaSection(context, isMobile),
-        ],
-      ),
+    return Column(
+      children: [
+        // Hero section
+        _buildHeroSection(context, isMobile),
+        // Value props
+        _buildValueProps(context, isMobile),
+        // How it works
+        _buildHowItWorks(context, isMobile),
+        // CTA section
+        _buildCtaSection(context, isMobile),
+      ],
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
+import '../../../data/models/testimonial.dart';
 import '../../../data/providers/testimonials_provider.dart';
 
 class SocialProofStrip extends ConsumerWidget {
@@ -115,7 +116,7 @@ class SocialProofStrip extends ConsumerWidget {
     );
   }
 
-  Widget _buildTestimonials(BuildContext context, List testimonials, bool isMobile) {
+  Widget _buildTestimonials(BuildContext context, List<Testimonial> testimonials, bool isMobile) {
     if (testimonials.isEmpty) return const SizedBox.shrink();
 
     // Take first 3 testimonials
@@ -145,7 +146,7 @@ class SocialProofStrip extends ConsumerWidget {
     );
   }
 
-  Widget _buildTestimonialCard(BuildContext context, dynamic testimonial) {
+  Widget _buildTestimonialCard(BuildContext context, Testimonial testimonial) {
     final typeIcon = switch (testimonial.type) {
       'vendor' => Icons.storefront,
       'organizer' => Icons.business,
@@ -190,7 +191,7 @@ class SocialProofStrip extends ConsumerWidget {
                 radius: 20,
                 backgroundColor: EventismTheme.primary.withValues(alpha: 0.1),
                 child: Text(
-                  testimonial.name.substring(0, 1).toUpperCase(),
+                  testimonial.authorName.substring(0, 1).toUpperCase(),
                   style: TextStyle(
                     color: EventismTheme.primary,
                     fontWeight: FontWeight.w600,
@@ -203,7 +204,7 @@ class SocialProofStrip extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      testimonial.name,
+                      testimonial.authorName,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
@@ -216,18 +217,14 @@ class SocialProofStrip extends ConsumerWidget {
                           typeLabel,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        if (testimonial.location != null) ...[
-                          const SizedBox(width: 8),
-                          Icon(Icons.location_on, size: 14, color: EventismTheme.textMuted),
-                          const SizedBox(width: 2),
-                          Flexible(
-                            child: Text(
-                              testimonial.location!,
-                              style: Theme.of(context).textTheme.bodySmall,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            testimonial.authorRole,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ],
+                        ),
                       ],
                     ),
                   ],

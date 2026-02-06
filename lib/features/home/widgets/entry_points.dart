@@ -53,16 +53,18 @@ class EntryPoints extends StatelessWidget {
                       ))
                   .toList(),
             )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: entries
-                  .map((e) => Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: _buildEntryCard(context, e, isMobile),
-                        ),
-                      ))
-                  .toList(),
+          : IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: entries
+                    .map((e) => Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: _buildEntryCard(context, e, isMobile),
+                          ),
+                        ))
+                    .toList(),
+              ),
             ),
     );
   }

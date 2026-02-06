@@ -11,23 +11,21 @@ class AboutPage extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     final isMobile = Breakpoints.isMobile(width);
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          // Hero section
-          _buildHeroSection(context, isMobile),
-          // Mission section
-          _buildMissionSection(context, isMobile),
-          // Features section
-          _buildFeaturesSection(context, isMobile),
-          // Stats section
-          _buildStatsSection(context, isMobile),
-          // Team section
-          _buildTeamSection(context, isMobile),
-          // CTA section
-          _buildCtaSection(context, isMobile),
-        ],
-      ),
+    return Column(
+      children: [
+        // Hero section
+        _buildHeroSection(context, isMobile),
+        // Mission section
+        _buildMissionSection(context, isMobile),
+        // Features section
+        _buildFeaturesSection(context, isMobile),
+        // Stats section
+        _buildStatsSection(context, isMobile),
+        // Team section
+        _buildTeamSection(context, isMobile),
+        // CTA section
+        _buildCtaSection(context, isMobile),
+      ],
     );
   }
 

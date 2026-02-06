@@ -23,7 +23,7 @@ class Footer extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 24 : 64,
-              vertical: isMobile ? 32 : 48,
+              vertical: isMobile ? 24 : 32,
             ),
             child: isMobile
                 ? _buildMobileFooter(context)
@@ -40,7 +40,7 @@ class Footer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 24 : 64,
-        vertical: isMobile ? 32 : 40,
+        vertical: isMobile ? 20 : 24,
       ),
       decoration: BoxDecoration(
         color: EventismTheme.primary.withValues(alpha: 0.1),

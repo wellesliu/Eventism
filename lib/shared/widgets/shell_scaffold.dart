@@ -20,11 +20,13 @@ class ShellScaffold extends StatelessWidget {
       appBar: isMobile ? _buildMobileAppBar(context) : null,
       drawer: isMobile ? _buildDrawer(context) : null,
       body: isMobile
-          ? Column(
-              children: [
-                Expanded(child: child),
-                const Footer(),
-              ],
+          ? SingleChildScrollView(
+              child: Column(
+                children: [
+                  child,
+                  const Footer(),
+                ],
+              ),
             )
           : Column(
               children: [
