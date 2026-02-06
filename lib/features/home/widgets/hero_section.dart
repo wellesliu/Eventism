@@ -63,6 +63,9 @@ class _HeroSectionState extends State<HeroSection> {
     final isMobile = Breakpoints.isMobile(width);
 
     return Container(
+      constraints: BoxConstraints(
+        minHeight: isMobile ? 500 : 600,
+      ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -87,7 +90,7 @@ class _HeroSectionState extends State<HeroSection> {
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: isMobile ? 24 : 64,
-              vertical: isMobile ? 40 : 64,
+              vertical: isMobile ? 48 : 80,
             ),
             child: isMobile
                 ? _buildMobileLayout(context)
@@ -178,22 +181,23 @@ class _HeroSectionState extends State<HeroSection> {
             children: [
               Text(
                 'Discover Amazing\nEvents Near You',
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      height: 1.15,
+                      height: 1.1,
+                      fontSize: 56,
                     ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
               Text(
                 'Find and explore experiences happening in your community.\nFrom markets to festivals, concerts to conferences.',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Colors.white.withValues(alpha: 0.85),
                       fontWeight: FontWeight.w400,
                       height: 1.6,
                     ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 40),
               _buildStats(context),
             ],
           ),

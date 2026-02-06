@@ -11,6 +11,8 @@ import '../features/vendors/vendor_directory_page.dart';
 import '../features/vendors/vendor_profile_page.dart';
 import '../features/organizers/organizer_directory_page.dart';
 import '../features/organizers/organizer_profile_page.dart';
+import '../features/list_event/list_event_page.dart';
+import '../features/join_vendor/join_vendor_page.dart';
 import '../shared/widgets/shell_scaffold.dart';
 
 final router = GoRouter(
@@ -102,6 +104,21 @@ final router = GoRouter(
             child: OrganizerProfilePage(
               organizerId: state.pathParameters['id']!,
             ),
+          ),
+        ),
+        // CTA routes
+        GoRoute(
+          path: '/list-event',
+          name: 'listEvent',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: ListEventPage(),
+          ),
+        ),
+        GoRoute(
+          path: '/join-vendor',
+          name: 'joinVendor',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: JoinVendorPage(),
           ),
         ),
       ],

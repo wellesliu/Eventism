@@ -156,7 +156,7 @@ class ShellScaffold extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: () {
                       Navigator.pop(context);
-                      ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+                      context.go('/list-event');
                     },
                     icon: const Icon(Icons.add),
                     label: const Text('List Your Event'),
@@ -168,7 +168,7 @@ class ShellScaffold extends StatelessWidget {
                   child: FilledButton.icon(
                     onPressed: () {
                       Navigator.pop(context);
-                      ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+                      context.go('/join-vendor');
                     },
                     icon: const Icon(Icons.storefront),
                     label: const Text('Join as Vendor'),
@@ -213,8 +213,14 @@ class ShellScaffold extends StatelessWidget {
     required List<_DrawerSubItem> children,
   }) {
     final currentPath = GoRouterState.of(context).uri.toString();
-    final isExpanded = children.any((c) =>
-      currentPath == c.path || currentPath.startsWith(c.path.split('?').first));
+    final isExpanded = children.any((c) {
+      // If path has query params, require exact match
+      if (c.path.contains('?')) {
+        return currentPath == c.path;
+      }
+      // Otherwise, use startsWith for nested routes
+      return currentPath == c.path || currentPath.startsWith('${c.path}/');
+    });
 
     return ExpansionTile(
       leading: Icon(
@@ -299,9 +305,7 @@ class ShellScaffold extends StatelessWidget {
           const Spacer(),
           // CTA buttons
           OutlinedButton.icon(
-            onPressed: () {
-              ToastService.info(context, 'Coming soon!', icon: Icons.construction);
-            },
+            onPressed: () => context.go('/list-event'),
             icon: const Icon(Icons.add, size: 18),
             label: const Text('List Your Event'),
             style: OutlinedButton.styleFrom(
@@ -310,9 +314,7 @@ class ShellScaffold extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           FilledButton.icon(
-            onPressed: () {
-              ToastService.info(context, 'Coming soon!', icon: Icons.construction);
-            },
+            onPressed: () => context.go('/join-vendor'),
             icon: const Icon(Icons.storefront, size: 18),
             label: const Text('Join as Vendor'),
             style: FilledButton.styleFrom(
@@ -351,8 +353,14 @@ class ShellScaffold extends StatelessWidget {
     required List<_DropdownItem> items,
   }) {
     final currentPath = GoRouterState.of(context).uri.toString();
-    final isSelected = items.any((item) =>
-      currentPath == item.path || currentPath.startsWith(item.path.split('?').first));
+    final isSelected = items.any((item) {
+      // If path has query params, require exact match
+      if (item.path.contains('?')) {
+        return currentPath == item.path;
+      }
+      // Otherwise, use startsWith for nested routes
+      return currentPath == item.path || currentPath.startsWith('${item.path}/');
+    });
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),

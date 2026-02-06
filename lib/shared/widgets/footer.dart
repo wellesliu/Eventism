@@ -163,9 +163,9 @@ class Footer extends StatelessWidget {
             context,
             title: 'For Vendors',
             links: [
+              _FooterLink('Join as Vendor', '/join-vendor'),
               _FooterLink('Vendor Opportunities', '/browse?vendors=true'),
               _FooterLink('Find Vendors', '/vendors/directory'),
-              _FooterLink('For Vendors', '/vendors'),
             ],
           ),
         ),
@@ -175,7 +175,7 @@ class Footer extends StatelessWidget {
             context,
             title: 'For Organizers',
             links: [
-              _FooterLink('List Your Event', null, isModal: true),
+              _FooterLink('List Your Event', '/list-event'),
               _FooterLink('Find Organizers', '/organizers'),
             ],
           ),
