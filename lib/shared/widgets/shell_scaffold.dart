@@ -13,7 +13,13 @@ class ShellScaffold extends StatelessWidget {
 
   /// Routes that manage their own scrolling and use Expanded widgets.
   /// These should NOT be wrapped in SingleChildScrollView.
-  static const _fullHeightRoutes = ['/browse', '/map', '/calendar'];
+  static const _fullHeightRoutes = [
+    '/browse',
+    '/map',
+    '/calendar',
+    '/vendors/directory',
+    '/organizers',
+  ];
 
   bool _isFullHeightRoute(BuildContext context) {
     final path = GoRouterState.of(context).uri.path;
