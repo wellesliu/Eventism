@@ -1,142 +1,154 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/theme.dart';
 import '../../../data/models/event.dart';
+import '../../../data/providers/favorites_provider.dart';
+import '../../../shared/widgets/event_interest_dialog.dart';
+import '../../../shared/widgets/share_sheet.dart';
+import '../../../shared/widgets/toast_service.dart';
 
-class CtaButtons extends StatelessWidget {
+class CtaButtons extends ConsumerWidget {
   final Event event;
 
   const CtaButtons({super.key, required this.event});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isFavorite = ref.watch(isEventFavoritedProvider(event.id));
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Interest count
+            if (event.interestCount > 0)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.favorite,
+                      size: 18,
+                      color: EventismTheme.error.withValues(alpha: 0.7),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      '${event.interestCount} people interested',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: EventismTheme.textSecondary,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+
+            // Price info
+            if (event.priceRange != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: event.priceRange == 'Free'
+                        ? EventismTheme.success.withValues(alpha: 0.1)
+                        : EventismTheme.background,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        event.priceRange == 'Free' ? Icons.celebration : Icons.confirmation_number,
+                        size: 20,
+                        color: event.priceRange == 'Free'
+                            ? EventismTheme.success
+                            : EventismTheme.primary,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        event.priceRange!,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: event.priceRange == 'Free'
+                                  ? EventismTheme.success
+                                  : EventismTheme.textPrimary,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
             // Get Tickets button
             FilledButton.icon(
               onPressed: () {
-                _showComingSoonDialog(context, 'Get Tickets');
+                showEventInterestDialog(context, event);
               },
               icon: const Icon(Icons.confirmation_number),
-              label: const Text('Get Tickets'),
+              label: Text(event.priceRange == 'Free' ? 'Register Interest' : 'Get Tickets'),
               style: FilledButton.styleFrom(
                 backgroundColor: EventismTheme.cta,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
             ),
-            const SizedBox(height: 12),
 
-            // Create Event button
-            OutlinedButton.icon(
-              onPressed: () {
-                _showComingSoonDialog(context, 'Create Event');
-              },
-              icon: const Icon(Icons.add_circle_outline),
-              label: const Text('Create Event'),
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-              ),
-            ),
-
-            // Apply as Vendor button (if accepts vendors)
-            if (event.acceptsVendors) ...[
-              const SizedBox(height: 12),
-              FilledButton.icon(
-                onPressed: () {
-                  _showComingSoonDialog(context, 'Vendor Application');
-                },
-                icon: const Icon(Icons.store),
-                label: const Text('Apply as Vendor'),
-                style: FilledButton.styleFrom(
-                  backgroundColor: EventismTheme.success,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-              ),
-            ],
-
-            const SizedBox(height: 20),
-            const Divider(),
             const SizedBox(height: 16),
 
-            // Share and save buttons
+            // Favorite and Share buttons
             Row(
               children: [
+                // Favorite button
                 Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      _showComingSoonDialog(context, 'Share');
-                    },
-                    icon: const Icon(Icons.share, size: 20),
-                    label: const Text('Share'),
+                  child: _FavoriteButton(
+                    eventId: event.id,
+                    isFavorite: isFavorite,
                   ),
                 ),
                 const SizedBox(width: 12),
+                // Share button
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {
-                      _showComingSoonDialog(context, 'Save');
-                    },
-                    icon: const Icon(Icons.bookmark_border, size: 20),
-                    label: const Text('Save'),
+                    onPressed: () => _shareEvent(context),
+                    icon: const Icon(Icons.share, size: 20),
+                    label: const Text('Share'),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                    ),
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 12),
 
-            // Organizer info
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: EventismTheme.background,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: EventismTheme.primary.withValues(alpha: 0.1),
-                    child: const Icon(
-                      Icons.business,
-                      color: EventismTheme.primary,
-                      size: 20,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Organized by',
-                          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                color: EventismTheme.textMuted,
-                              ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          'Event Organizer',
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                      ],
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      _showComingSoonDialog(context, 'Contact');
-                    },
-                    child: const Text('Contact'),
-                  ),
-                ],
+            // Add to calendar
+            OutlinedButton.icon(
+              onPressed: () {
+                _showComingSoonDialog(context, 'Add to Calendar');
+              },
+              icon: const Icon(Icons.calendar_today, size: 20),
+              label: const Text('Add to Calendar'),
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 14),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _shareEvent(BuildContext context) {
+    final eventUrl = 'https://eventism.com/event/${event.id}';
+    showShareSheet(
+      context,
+      title: event.name,
+      url: eventUrl,
+      description: event.description,
     );
   }
 
@@ -156,6 +168,47 @@ class CtaButtons extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _FavoriteButton extends ConsumerWidget {
+  final String eventId;
+  final bool isFavorite;
+
+  const _FavoriteButton({
+    required this.eventId,
+    required this.isFavorite,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      child: isFavorite
+          ? FilledButton.icon(
+              onPressed: () {
+                ref.read(favoritesProvider.notifier).toggleFavorite(eventId);
+                ToastService.info(context, 'Removed from favorites');
+              },
+              icon: const Icon(Icons.favorite, size: 20),
+              label: const Text('Saved'),
+              style: FilledButton.styleFrom(
+                backgroundColor: EventismTheme.error,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+            )
+          : OutlinedButton.icon(
+              onPressed: () {
+                ref.read(favoritesProvider.notifier).toggleFavorite(eventId);
+                ToastService.success(context, 'Added to favorites');
+              },
+              icon: const Icon(Icons.favorite_border, size: 20),
+              label: const Text('Save'),
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+            ),
     );
   }
 }

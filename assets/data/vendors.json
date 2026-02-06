@@ -1,0 +1,203 @@
+[
+  {
+    "id": "v-001",
+    "name": "Sunny Side Candles",
+    "slug": "sunny-side-candles",
+    "tagline": "Hand-poured soy candles with Australian botanicals",
+    "description": "We create beautiful hand-poured soy candles using locally sourced Australian botanicals and essential oils. Each candle is crafted with care in our Byron Bay studio, bringing the essence of Australian nature into your home. From native eucalyptus to coastal sea salt, our scents tell the story of this beautiful land.",
+    "logo_url": "https://images.unsplash.com/photo-1602607434876-b0c8adf61dff?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1602607434876-b0c8adf61dff?w=600",
+      "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600",
+      "https://images.unsplash.com/photo-1608181831718-2501fc014ad2?w=600"
+    ],
+    "categories": ["Handmade Crafts", "Home & Garden"],
+    "location": "Byron Bay, NSW",
+    "website": "https://example.com/sunnysidecandles",
+    "instagram": "sunnysidecandles",
+    "tiktok": null,
+    "past_event_ids": ["019bab67-67f7-4e96-92c6-dc8a9bd1c50f"],
+    "is_available": true
+  },
+  {
+    "id": "v-002",
+    "name": "Pocket Pierogies",
+    "slug": "pocket-pierogies",
+    "tagline": "Traditional Polish dumplings with an Aussie twist",
+    "description": "Family recipes passed down through generations, now with a modern Australian fusion. We serve traditional Polish pierogies alongside creative flavours like lamb and rosemary, and kangaroo with native pepperberry. Perfect comfort food for any market day.",
+    "logo_url": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600",
+      "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600"
+    ],
+    "categories": ["Food & Beverage"],
+    "location": "Melbourne, VIC",
+    "website": null,
+    "instagram": "pocketpierogies",
+    "tiktok": "pocketpierogies",
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-003",
+    "name": "Wild Thread Studio",
+    "slug": "wild-thread-studio",
+    "tagline": "Sustainable fashion from recycled textiles",
+    "description": "We transform pre-loved fabrics into unique, wearable art. Each piece is one-of-a-kind, crafted from carefully curated vintage textiles and deadstock fabrics. Our mission is to prove that sustainable fashion can be bold, beautiful, and accessible.",
+    "logo_url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600",
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600",
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600"
+    ],
+    "categories": ["Fashion & Accessories"],
+    "location": "Sydney, NSW",
+    "website": "https://example.com/wildthread",
+    "instagram": "wildthreadstudio",
+    "tiktok": "wildthreadstudio",
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-004",
+    "name": "Brush & Bloom Art",
+    "slug": "brush-bloom-art",
+    "tagline": "Botanical illustrations and nature-inspired prints",
+    "description": "Detailed botanical illustrations celebrating Australian native flora. Our prints, cards, and original artworks make perfect gifts for nature lovers. We also offer custom pet and plant portraits commissioned at markets.",
+    "logo_url": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600",
+      "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=600"
+    ],
+    "categories": ["Art & Photography"],
+    "location": "Brisbane, QLD",
+    "website": "https://example.com/brushbloom",
+    "instagram": "brushbloomart",
+    "tiktok": null,
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-005",
+    "name": "Little Luxe Soaps",
+    "slug": "little-luxe-soaps",
+    "tagline": "Artisan soaps made with native Australian ingredients",
+    "description": "Handcrafted cold-process soaps featuring ingredients like Kakadu plum, lemon myrtle, and Davidson plum. Gentle on skin, kind to the planet. All products are palm-oil free and packaged in compostable materials.",
+    "logo_url": "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600"
+    ],
+    "categories": ["Health & Beauty", "Handmade Crafts"],
+    "location": "Adelaide, SA",
+    "website": null,
+    "instagram": "littleluxesoaps",
+    "tiktok": null,
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-006",
+    "name": "Timber & Twine",
+    "slug": "timber-twine",
+    "tagline": "Handcrafted wooden homewares and macrame",
+    "description": "We combine traditional woodworking with modern macrame to create unique homewares. From serving boards crafted from reclaimed Australian hardwoods to plant hangers made with natural cotton rope, each piece brings warmth to your space.",
+    "logo_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600",
+      "https://images.unsplash.com/photo-1604145148159-134d00c73763?w=600"
+    ],
+    "categories": ["Home & Garden", "Handmade Crafts"],
+    "location": "Perth, WA",
+    "website": "https://example.com/timbertwine",
+    "instagram": "timberandtwine",
+    "tiktok": null,
+    "past_event_ids": [],
+    "is_available": false
+  },
+  {
+    "id": "v-007",
+    "name": "Golden Hour Coffee",
+    "slug": "golden-hour-coffee",
+    "tagline": "Specialty coffee and house-made pastries",
+    "description": "Mobile specialty coffee bringing the cafe experience to markets and events. We roast our own beans in small batches and pair them with fresh pastries baked each morning. From silky flat whites to refreshing cold brews, we've got your caffeine fix covered.",
+    "logo_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
+      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600"
+    ],
+    "categories": ["Food & Beverage"],
+    "location": "Gold Coast, QLD",
+    "website": null,
+    "instagram": "goldenhourcoffee",
+    "tiktok": "goldenhourcoffee",
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-008",
+    "name": "Retro Revival Records",
+    "slug": "retro-revival-records",
+    "tagline": "Curated vinyl and vintage music memorabilia",
+    "description": "We hunt down the best vintage vinyl, cassettes, and music memorabilia across Australia. From rare Aussie pressings to classic international releases, our carefully curated collection spans all genres and eras. We also buy and trade collections.",
+    "logo_url": "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=600",
+      "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?w=600"
+    ],
+    "categories": ["Collectibles", "Pop Culture"],
+    "location": "Melbourne, VIC",
+    "website": "https://example.com/retrorevival",
+    "instagram": "retrorevivalrecords",
+    "tiktok": null,
+    "past_event_ids": ["019bab67-67f7-4e96-92c6-dc8a9bd1c50f", "01efe035-0c6e-4758-941c-84fe02964bd0"],
+    "is_available": true
+  },
+  {
+    "id": "v-009",
+    "name": "Tiny Humans Co",
+    "slug": "tiny-humans-co",
+    "tagline": "Organic cotton clothing for babies and toddlers",
+    "description": "Designed and made in Australia, our organic cotton clothing is perfect for little ones. Soft, breathable fabrics in gender-neutral colours and playful prints. We believe sustainable choices should start from the very beginning.",
+    "logo_url": "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600"
+    ],
+    "categories": ["Kids & Family", "Fashion & Accessories"],
+    "location": "Sydney, NSW",
+    "website": "https://example.com/tinyhumans",
+    "instagram": "tinyhumansco",
+    "tiktok": null,
+    "past_event_ids": [],
+    "is_available": true
+  },
+  {
+    "id": "v-010",
+    "name": "Ceramic Stories",
+    "slug": "ceramic-stories",
+    "tagline": "Handthrown pottery inspired by the Australian coast",
+    "description": "Each piece tells the story of our coastal landscape - from the deep blues of the ocean to the soft sandy neutrals of the shore. Functional pottery designed for everyday use and built to last. Mugs, bowls, vases, and custom pieces available.",
+    "logo_url": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=200&h=200&fit=crop",
+    "cover_url": "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&h=400&fit=crop",
+    "gallery_urls": [
+      "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600",
+      "https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=600"
+    ],
+    "categories": ["Handmade Crafts", "Home & Garden"],
+    "location": "Newcastle, NSW",
+    "website": "https://example.com/ceramicstories",
+    "instagram": "ceramicstories_",
+    "tiktok": "ceramicstories",
+    "past_event_ids": [],
+    "is_available": true
+  }
+]

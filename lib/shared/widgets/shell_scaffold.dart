@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/constants.dart';
 import '../../core/theme.dart';
+import 'footer.dart';
+import 'toast_service.dart';
 
 class ShellScaffold extends StatelessWidget {
   final Widget child;
@@ -18,11 +20,25 @@ class ShellScaffold extends StatelessWidget {
       appBar: isMobile ? _buildMobileAppBar(context) : null,
       drawer: isMobile ? _buildDrawer(context) : null,
       body: isMobile
-          ? child
+          ? Column(
+              children: [
+                Expanded(child: child),
+                const Footer(),
+              ],
+            )
           : Column(
               children: [
                 _buildDesktopNav(context),
-                Expanded(child: child),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        child,
+                        const Footer(),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
     );
@@ -30,7 +46,14 @@ class ShellScaffold extends StatelessWidget {
 
   PreferredSizeWidget _buildMobileAppBar(BuildContext context) {
     return AppBar(
-      title: const Text(AppConstants.appName),
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildLogoIcon(size: 28),
+          const SizedBox(width: 8),
+          const Text(AppConstants.appName),
+        ],
+      ),
       centerTitle: true,
     );
   }
@@ -57,45 +80,7 @@ class ShellScaffold extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 22,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                          ),
-                          Container(
-                            width: 16,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                          ),
-                          Container(
-                            width: 22,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    _buildLogoIcon(size: 48, padding: 10),
                     const SizedBox(width: 12),
                     Text(
                       AppConstants.appName,
@@ -117,10 +102,59 @@ class ShellScaffold extends StatelessWidget {
             ),
           ),
           _buildNavItem(context, 'Home', Icons.home_outlined, '/'),
-          _buildNavItem(context, 'Browse', Icons.search, '/browse'),
-          _buildNavItem(context, 'Map', Icons.map_outlined, '/map'),
-          _buildNavItem(context, 'Calendar', Icons.calendar_today_outlined, '/calendar'),
+          _buildExpandableNavItem(
+            context,
+            title: 'Events',
+            icon: Icons.event_outlined,
+            children: [
+              _DrawerSubItem('Browse All', '/browse'),
+              _DrawerSubItem('Map View', '/map'),
+              _DrawerSubItem('Calendar', '/calendar'),
+            ],
+          ),
+          _buildExpandableNavItem(
+            context,
+            title: 'Vendors',
+            icon: Icons.storefront_outlined,
+            children: [
+              _DrawerSubItem('For Vendors', '/vendors'),
+              _DrawerSubItem('Find Vendors', '/vendors/directory'),
+              _DrawerSubItem('Vendor Opportunities', '/browse?vendors=true'),
+            ],
+          ),
+          _buildNavItem(context, 'Organizers', Icons.business_outlined, '/organizers'),
           _buildNavItem(context, 'About', Icons.info_outline, '/about'),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+                    },
+                    icon: const Icon(Icons.add),
+                    label: const Text('List Your Event'),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+                    },
+                    icon: const Icon(Icons.storefront),
+                    label: const Text('Join as Vendor'),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -150,6 +184,51 @@ class ShellScaffold extends StatelessWidget {
     );
   }
 
+  Widget _buildExpandableNavItem(
+    BuildContext context, {
+    required String title,
+    required IconData icon,
+    required List<_DrawerSubItem> children,
+  }) {
+    final currentPath = GoRouterState.of(context).uri.toString();
+    final isExpanded = children.any((c) =>
+      currentPath == c.path || currentPath.startsWith(c.path.split('?').first));
+
+    return ExpansionTile(
+      leading: Icon(
+        icon,
+        color: isExpanded ? EventismTheme.primary : EventismTheme.textSecondary,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isExpanded ? EventismTheme.primary : EventismTheme.textPrimary,
+          fontWeight: isExpanded ? FontWeight.w600 : FontWeight.w400,
+        ),
+      ),
+      initiallyExpanded: isExpanded,
+      children: children.map((item) {
+        final isItemSelected = currentPath == item.path ||
+          currentPath.startsWith(item.path.split('?').first);
+        return ListTile(
+          contentPadding: const EdgeInsets.only(left: 56),
+          title: Text(
+            item.label,
+            style: TextStyle(
+              color: isItemSelected ? EventismTheme.primary : EventismTheme.textSecondary,
+              fontWeight: isItemSelected ? FontWeight.w500 : FontWeight.w400,
+              fontSize: 14,
+            ),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+            context.go(item.path);
+          },
+        );
+      }).toList(),
+    );
+  }
+
   Widget _buildDesktopNav(BuildContext context) {
     return Container(
       color: EventismTheme.surface,
@@ -161,52 +240,7 @@ class ShellScaffold extends StatelessWidget {
             onTap: () => context.go('/'),
             child: Row(
               children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        EventismTheme.primary,
-                        EventismTheme.primaryDark,
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                      Container(
-                        width: 14,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                      Container(
-                        width: 20,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _buildLogoIcon(size: 40, padding: 8),
                 const SizedBox(width: 12),
                 Text(
                   AppConstants.appName,
@@ -217,21 +251,51 @@ class ShellScaffold extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(),
+          const SizedBox(width: 48),
           // Nav links
           _buildDesktopNavLink(context, 'Home', '/'),
-          _buildDesktopNavLink(context, 'Browse', '/browse'),
-          _buildDesktopNavLink(context, 'Map', '/map'),
-          _buildDesktopNavLink(context, 'Calendar', '/calendar'),
+          _buildDesktopDropdown(
+            context,
+            label: 'Events',
+            items: [
+              _DropdownItem('Browse All', '/browse', Icons.grid_view),
+              _DropdownItem('Map View', '/map', Icons.map_outlined),
+              _DropdownItem('Calendar', '/calendar', Icons.calendar_today_outlined),
+            ],
+          ),
+          _buildDesktopDropdown(
+            context,
+            label: 'Vendors',
+            items: [
+              _DropdownItem('For Vendors', '/vendors', Icons.info_outline),
+              _DropdownItem('Find Vendors', '/vendors/directory', Icons.search),
+              _DropdownItem('Vendor Opportunities', '/browse?vendors=true', Icons.storefront),
+            ],
+          ),
+          _buildDesktopNavLink(context, 'Organizers', '/organizers'),
           _buildDesktopNavLink(context, 'About', '/about'),
-          const SizedBox(width: 24),
-          // CTA button
+          const Spacer(),
+          // CTA buttons
+          OutlinedButton.icon(
+            onPressed: () {
+              ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+            },
+            icon: const Icon(Icons.add, size: 18),
+            label: const Text('List Your Event'),
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            ),
+          ),
+          const SizedBox(width: 12),
           FilledButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.add, size: 20),
-            label: const Text('Create Event'),
+            onPressed: () {
+              ToastService.info(context, 'Coming soon!', icon: Icons.construction);
+            },
+            icon: const Icon(Icons.storefront, size: 18),
+            label: const Text('Join as Vendor'),
             style: FilledButton.styleFrom(
               backgroundColor: EventismTheme.cta,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
           ),
         ],
@@ -244,7 +308,7 @@ class ShellScaffold extends StatelessWidget {
     final isSelected = currentPath == path || (path != '/' && currentPath.startsWith(path));
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextButton(
         onPressed: () => context.go(path),
         child: Text(
@@ -252,10 +316,130 @@ class ShellScaffold extends StatelessWidget {
           style: TextStyle(
             color: isSelected ? EventismTheme.primary : EventismTheme.textSecondary,
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-            fontSize: 16,
+            fontSize: 15,
           ),
         ),
       ),
     );
   }
+
+  Widget _buildDesktopDropdown(
+    BuildContext context, {
+    required String label,
+    required List<_DropdownItem> items,
+  }) {
+    final currentPath = GoRouterState.of(context).uri.toString();
+    final isSelected = items.any((item) =>
+      currentPath == item.path || currentPath.startsWith(item.path.split('?').first));
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: PopupMenuButton<String>(
+        offset: const Offset(0, 40),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        onSelected: (path) => context.go(path),
+        itemBuilder: (context) => items.map((item) {
+          return PopupMenuItem<String>(
+            value: item.path,
+            child: Row(
+              children: [
+                Icon(
+                  item.icon,
+                  size: 18,
+                  color: EventismTheme.textSecondary,
+                ),
+                const SizedBox(width: 12),
+                Text(item.label),
+              ],
+            ),
+          );
+        }).toList(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                color: isSelected ? EventismTheme.primary : EventismTheme.textSecondary,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(width: 4),
+            Icon(
+              Icons.keyboard_arrow_down,
+              size: 18,
+              color: isSelected ? EventismTheme.primary : EventismTheme.textSecondary,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLogoIcon({required double size, double padding = 8}) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            EventismTheme.primary,
+            EventismTheme.primaryDark,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(size * 0.25),
+      ),
+      padding: EdgeInsets.all(padding),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: size * 0.5,
+            height: size * 0.1,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          Container(
+            width: size * 0.35,
+            height: size * 0.1,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          Container(
+            width: size * 0.5,
+            height: size * 0.1,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DrawerSubItem {
+  final String label;
+  final String path;
+
+  const _DrawerSubItem(this.label, this.path);
+}
+
+class _DropdownItem {
+  final String label;
+  final String path;
+  final IconData icon;
+
+  const _DropdownItem(this.label, this.path, this.icon);
 }

@@ -6,6 +6,25 @@ part of 'event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+VendorInfo _$VendorInfoFromJson(Map<String, dynamic> json) => VendorInfo(
+      stallFee: json['stall_fee'] as String?,
+      includes: (json['includes'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      requirements: (json['requirements'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$VendorInfoToJson(VendorInfo instance) =>
+    <String, dynamic>{
+      'stall_fee': instance.stallFee,
+      'includes': instance.includes,
+      'requirements': instance.requirements,
+    };
+
 Event _$EventFromJson(Map<String, dynamic> json) => Event(
       id: json['id'] as String,
       organiserId: json['organiser_id'] as String?,
@@ -24,6 +43,13 @@ Event _$EventFromJson(Map<String, dynamic> json) => Event(
       status: json['status'] as String? ?? 'published',
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
+      expectedAttendance: (json['expected_attendance'] as num?)?.toInt(),
+      priceRange: json['price_range'] as String?,
+      interestCount: (json['interest_count'] as num?)?.toInt() ?? 0,
+      vendorInfo: json['vendor_info'] == null
+          ? null
+          : VendorInfo.fromJson(json['vendor_info'] as Map<String, dynamic>),
+      isFeatured: json['is_featured'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
@@ -41,4 +67,9 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'status': instance.status,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
+      'expected_attendance': instance.expectedAttendance,
+      'price_range': instance.priceRange,
+      'interest_count': instance.interestCount,
+      'vendor_info': instance.vendorInfo?.toJson(),
+      'is_featured': instance.isFeatured,
     };

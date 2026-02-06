@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
-import 'search_bar.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -17,7 +16,17 @@ class _HeroSectionState extends State<HeroSection> {
   DateTime? _startDate;
   DateTime? _endDate;
   bool _acceptingVendors = false;
+  String? _selectedCity;
   final _searchController = TextEditingController();
+
+  // Popular search suggestions
+  static const _popularSearches = [
+    'Markets',
+    'Food Festivals',
+    'Live Music',
+    'Art Exhibitions',
+    'Family Events',
+  ];
 
   @override
   void dispose() {
@@ -25,10 +34,14 @@ class _HeroSectionState extends State<HeroSection> {
     super.dispose();
   }
 
-  void _navigateToSearch() {
+  void _navigateToSearch({String? query}) {
     final params = <String, String>{};
-    if (_searchController.text.isNotEmpty) {
-      params['q'] = _searchController.text;
+    final searchQuery = query ?? _searchController.text;
+    if (searchQuery.isNotEmpty) {
+      params['q'] = searchQuery;
+    }
+    if (_selectedCity != null) {
+      params['city'] = _selectedCity!;
     }
     if (_startDate != null) {
       params['start'] = _startDate!.toIso8601String().split('T')[0];
@@ -106,12 +119,45 @@ class _HeroSectionState extends State<HeroSection> {
               ),
         ),
         const SizedBox(height: 24),
-        HomeSearchBar(
-          onSearch: (query) {
-            if (context.mounted) {
-              context.go('/browse?q=$query');
-            }
-          },
+        // Search card for mobile
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search events...',
+                  prefixIcon: const Icon(Icons.search),
+                  filled: true,
+                  fillColor: EventismTheme.background,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                onSubmitted: (_) => _navigateToSearch(),
+              ),
+              const SizedBox(height: 12),
+              _buildCityDropdown(context),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () => _navigateToSearch(),
+                  child: const Text('Search'),
+                ),
+              ),
+              const SizedBox(height: 12),
+              _buildPopularSearches(context),
+            ],
+          ),
         ),
         const SizedBox(height: 24),
         _buildStats(context),
@@ -181,6 +227,7 @@ class _HeroSectionState extends State<HeroSection> {
                       ),
                 ),
                 const SizedBox(height: 16),
+                // Search input
                 TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
@@ -195,6 +242,9 @@ class _HeroSectionState extends State<HeroSection> {
                   ),
                   onSubmitted: (_) => _navigateToSearch(),
                 ),
+                const SizedBox(height: 12),
+                // City dropdown
+                _buildCityDropdown(context),
                 const SizedBox(height: 12),
                 // Date filters
                 Row(
@@ -285,16 +335,96 @@ class _HeroSectionState extends State<HeroSection> {
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
-                    onPressed: _navigateToSearch,
+                    onPressed: () => _navigateToSearch(),
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                     child: const Text('Search Events'),
                   ),
                 ),
+                const SizedBox(height: 16),
+                // Popular searches
+                _buildPopularSearches(context),
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCityDropdown(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: EventismTheme.background,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          value: _selectedCity,
+          hint: Row(
+            children: [
+              Icon(Icons.location_on, size: 20, color: EventismTheme.textMuted),
+              const SizedBox(width: 8),
+              Text(
+                'All Cities',
+                style: TextStyle(color: EventismTheme.textSecondary),
+              ),
+            ],
+          ),
+          isExpanded: true,
+          icon: Icon(Icons.keyboard_arrow_down, color: EventismTheme.textMuted),
+          items: [
+            DropdownMenuItem<String>(
+              value: null,
+              child: Text('All Cities'),
+            ),
+            ...AppConstants.australianCities.map(
+              (city) => DropdownMenuItem<String>(
+                value: city,
+                child: Row(
+                  children: [
+                    Icon(Icons.location_on, size: 18, color: EventismTheme.textMuted),
+                    const SizedBox(width: 8),
+                    Text(city),
+                  ],
+                ),
+              ),
+            ),
+          ],
+          onChanged: (value) => setState(() => _selectedCity = value),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPopularSearches(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Popular searches',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: EventismTheme.textMuted,
+              ),
+        ),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: _popularSearches.map((search) {
+            return ActionChip(
+              label: Text(search),
+              onPressed: () => _navigateToSearch(query: search),
+              backgroundColor: EventismTheme.background,
+              side: BorderSide(color: EventismTheme.border),
+              labelStyle: TextStyle(
+                color: EventismTheme.textSecondary,
+                fontSize: 12,
+              ),
+            );
+          }).toList(),
         ),
       ],
     );
@@ -331,39 +461,6 @@ class _HeroSectionState extends State<HeroSection> {
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: hasDate ? EventismTheme.primary : EventismTheme.textSecondary,
                       fontWeight: hasDate ? FontWeight.w500 : FontWeight.w400,
-                    ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildQuickFilter(
-    BuildContext context, {
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-  }) {
-    return Material(
-      color: EventismTheme.background,
-      borderRadius: BorderRadius.circular(10),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(10),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, size: 16, color: EventismTheme.primary),
-              const SizedBox(width: 6),
-              Text(
-                label,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: EventismTheme.textPrimary,
-                      fontWeight: FontWeight.w500,
                     ),
               ),
             ],

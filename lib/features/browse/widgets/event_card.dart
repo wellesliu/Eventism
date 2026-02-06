@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
 import '../../../data/models/event.dart';
+import '../../../shared/widgets/event_badge.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;
@@ -36,30 +37,42 @@ class EventCard extends StatelessWidget {
                           errorBuilder: (_, __, ___) => _buildPlaceholder(),
                         )
                       : _buildPlaceholder(),
-                  // Tags overlay
-                  if (event.tags.isNotEmpty)
-                    Positioned(
-                      top: 8,
-                      left: 8,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: EventismTheme.primary,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          event.tags.first,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
+                  // Badges overlay
+                  Positioned(
+                    top: 8,
+                    left: 8,
+                    right: 8,
+                    child: Row(
+                      children: [
+                        if (event.isFeatured) ...[
+                          const EventBadge(type: EventBadgeType.featured),
+                          const SizedBox(width: 6),
+                        ],
+                        if (event.tags.isNotEmpty)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: EventismTheme.primary,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              event.tags.first,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        const Spacer(),
+                        if (event.priceRange == 'Free')
+                          const EventBadge(type: EventBadgeType.free),
+                      ],
                     ),
+                  ),
                 ],
               ),
             ),
@@ -133,35 +146,9 @@ class EventCard extends StatelessWidget {
                     ),
                     // Vendor badge
                     if (event.acceptsVendors)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: EventismTheme.success.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.store,
-                                size: 12,
-                                color: EventismTheme.success,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                'Vendors welcome',
-                                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                      color: EventismTheme.success,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 8),
+                        child: EventBadge(type: EventBadgeType.vendorsWelcome),
                       ),
                   ],
                 ),

@@ -1,0 +1,19 @@
+// Barrel file for shared widgets
+export 'breadcrumbs.dart';
+export 'contact_dialog.dart';
+export 'count_badge.dart';
+export 'empty_state.dart';
+export 'error_state.dart';
+export 'event_badge.dart';
+export 'event_interest_dialog.dart';
+export 'favorite_button.dart';
+export 'footer.dart';
+export 'image_gallery.dart';
+export 'page_transitions.dart';
+export 'scroll_to_top.dart';
+export 'section_header.dart';
+export 'share_sheet.dart';
+export 'shell_scaffold.dart';
+export 'skeleton_loader.dart';
+export 'social_links.dart';
+export 'toast_service.dart';

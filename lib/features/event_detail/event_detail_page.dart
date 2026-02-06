@@ -5,9 +5,12 @@ import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
 import '../../core/theme.dart';
 import '../../data/providers/events_provider.dart';
+import '../../shared/widgets/breadcrumbs.dart';
 import 'widgets/event_header.dart';
 import 'widgets/event_info.dart';
 import 'widgets/cta_buttons.dart';
+import 'widgets/vendor_info_section.dart';
+import 'widgets/organizer_card.dart';
 
 class EventDetailPage extends ConsumerWidget {
   final String eventId;
@@ -81,6 +84,23 @@ class EventDetailPage extends ConsumerWidget {
                   background: EventHeader(event: event),
                 ),
               ),
+              // Breadcrumbs
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: isMobile ? 16 : 32,
+                    right: isMobile ? 16 : 32,
+                    top: 16,
+                  ),
+                  child: Breadcrumbs(
+                    items: [
+                      BreadcrumbItem(label: 'Home', path: '/'),
+                      BreadcrumbItem(label: 'Events', path: '/browse'),
+                      BreadcrumbItem(label: event.name),
+                    ],
+                  ),
+                ),
+              ),
               // Content
               SliverToBoxAdapter(
                 child: Padding(
@@ -90,8 +110,15 @@ class EventDetailPage extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             EventInfo(event: event),
+                            // Vendor section
+                            if (event.acceptsVendors) ...[
+                              const SizedBox(height: 32),
+                              VendorInfoSection(event: event),
+                            ],
                             const SizedBox(height: 24),
                             CtaButtons(event: event),
+                            const SizedBox(height: 24),
+                            OrganizerCard(organizerId: event.organiserId),
                           ],
                         )
                       : Row(
@@ -99,12 +126,28 @@ class EventDetailPage extends ConsumerWidget {
                           children: [
                             Expanded(
                               flex: 2,
-                              child: EventInfo(event: event),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  EventInfo(event: event),
+                                  // Vendor section
+                                  if (event.acceptsVendors) ...[
+                                    const SizedBox(height: 32),
+                                    VendorInfoSection(event: event),
+                                  ],
+                                ],
+                              ),
                             ),
                             const SizedBox(width: 32),
                             SizedBox(
-                              width: 300,
-                              child: CtaButtons(event: event),
+                              width: 340,
+                              child: Column(
+                                children: [
+                                  CtaButtons(event: event),
+                                  const SizedBox(height: 24),
+                                  OrganizerCard(organizerId: event.organiserId),
+                                ],
+                              ),
                             ),
                           ],
                         ),

@@ -7,6 +7,7 @@ import '../../core/constants.dart';
 import '../../core/theme.dart';
 import 'browse_provider.dart';
 import 'widgets/event_card.dart';
+import 'widgets/event_list_item.dart';
 import 'widgets/filter_sidebar.dart';
 import 'widgets/pagination_controls.dart';
 
@@ -29,6 +30,7 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
       final uri = GoRouterState.of(context).uri;
       final query = uri.queryParameters['q'];
       final tag = uri.queryParameters['tag'];
+      final city = uri.queryParameters['city'];
       final startParam = uri.queryParameters['start'];
       final endParam = uri.queryParameters['end'];
       final vendorsParam = uri.queryParameters['vendors'];
@@ -39,6 +41,9 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
       }
       if (tag != null) {
         ref.read(browseStateProvider.notifier).toggleTag(tag);
+      }
+      if (city != null) {
+        ref.read(browseStateProvider.notifier).setCity(city);
       }
       if (startParam != null || endParam != null) {
         final startDate = startParam != null ? DateTime.tryParse(startParam) : null;
@@ -293,8 +298,8 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
 
                     return Column(
                       children: [
-                        // Results count
-                        Padding(
+                        // Results header with count, sort, and view toggle
+                        Container(
                           padding: EdgeInsets.all(isMobile ? 16 : 24),
                           child: Row(
                             children: [
@@ -303,42 +308,113 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const Spacer(),
-                              // Page size selector
-                              DropdownButton<int>(
-                                value: result.pageSize,
-                                items: AppConstants.pageSizeOptions.map((size) {
-                                  return DropdownMenuItem(
-                                    value: size,
-                                    child: Text('$size per page'),
-                                  );
-                                }).toList(),
+                              // Sort dropdown
+                              if (!isMobile) ...[
+                                Text(
+                                  'Sort by: ',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                                const SizedBox(width: 4),
+                              ],
+                              DropdownButton<SortOption>(
+                                value: filters.sortBy,
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: SortOption.date,
+                                    child: Text('Date'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: SortOption.popularity,
+                                    child: Text('Popularity'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: SortOption.relevance,
+                                    child: Text('Relevance'),
+                                  ),
+                                ],
                                 onChanged: (value) {
                                   if (value != null) {
-                                    ref.read(browseStateProvider.notifier).setPageSize(value);
+                                    ref.read(browseStateProvider.notifier).setSortBy(value);
                                   }
                                 },
                                 underline: const SizedBox(),
                               ),
+                              const SizedBox(width: 16),
+                              // View toggle
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: EventismTheme.background,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: EventismTheme.border),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    _buildViewToggleButton(
+                                      context,
+                                      icon: Icons.grid_view,
+                                      isSelected: filters.viewMode == ViewMode.grid,
+                                      onTap: () => ref.read(browseStateProvider.notifier).setViewMode(ViewMode.grid),
+                                    ),
+                                    _buildViewToggleButton(
+                                      context,
+                                      icon: Icons.view_list,
+                                      isSelected: filters.viewMode == ViewMode.list,
+                                      onTap: () => ref.read(browseStateProvider.notifier).setViewMode(ViewMode.list),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              if (!isMobile) ...[
+                                const SizedBox(width: 16),
+                                // Page size selector
+                                DropdownButton<int>(
+                                  value: result.pageSize,
+                                  items: AppConstants.pageSizeOptions.map((size) {
+                                    return DropdownMenuItem(
+                                      value: size,
+                                      child: Text('$size per page'),
+                                    );
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    if (value != null) {
+                                      ref.read(browseStateProvider.notifier).setPageSize(value);
+                                    }
+                                  },
+                                  underline: const SizedBox(),
+                                ),
+                              ],
                             ],
                           ),
                         ),
-                        // Event grid
+                        // Events (grid or list view)
                         Expanded(
-                          child: GridView.builder(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: isMobile ? 16 : 24,
-                            ),
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: isDesktop ? columns - 1 : columns,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 16,
-                              childAspectRatio: 1.0,
-                            ),
-                            itemCount: result.events.length,
-                            itemBuilder: (context, index) {
-                              return EventCard(event: result.events[index]);
-                            },
-                          ),
+                          child: filters.viewMode == ViewMode.grid
+                              ? GridView.builder(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: isMobile ? 16 : 24,
+                                  ),
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: isDesktop ? columns - 1 : columns,
+                                    mainAxisSpacing: 16,
+                                    crossAxisSpacing: 16,
+                                    childAspectRatio: 1.0,
+                                  ),
+                                  itemCount: result.events.length,
+                                  itemBuilder: (context, index) {
+                                    return EventCard(event: result.events[index]);
+                                  },
+                                )
+                              : ListView.separated(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: isMobile ? 16 : 24,
+                                  ),
+                                  itemCount: result.events.length,
+                                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                                  itemBuilder: (context, index) {
+                                    return EventListItem(event: result.events[index]);
+                                  },
+                                ),
                         ),
                         // Pagination
                         if (result.totalPages > 1)
@@ -425,6 +501,30 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
     );
   }
 
+  Widget _buildViewToggleButton(
+    BuildContext context, {
+    required IconData icon,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(6),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: isSelected ? EventismTheme.primary : Colors.transparent,
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Icon(
+          icon,
+          size: 20,
+          color: isSelected ? Colors.white : EventismTheme.textMuted,
+        ),
+      ),
+    );
+  }
+
   Widget _buildActiveFilters(BrowseFilters filters) {
     return Wrap(
       spacing: 8,
@@ -451,11 +551,25 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
               ref.read(browseStateProvider.notifier).setCity(null);
             },
           ),
+        if (filters.priceRange != null)
+          Chip(
+            label: Text(filters.priceRange!),
+            onDeleted: () {
+              ref.read(browseStateProvider.notifier).setPriceRange(null);
+            },
+          ),
         if (filters.startDate != null || filters.endDate != null)
           Chip(
             label: const Text('Date range'),
             onDeleted: () {
               ref.read(browseStateProvider.notifier).setDateRange(null, null);
+            },
+          ),
+        if (filters.acceptingVendors)
+          Chip(
+            label: const Text('Accepting vendors'),
+            onDeleted: () {
+              ref.read(browseStateProvider.notifier).setAcceptingVendors(false);
             },
           ),
       ],

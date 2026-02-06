@@ -1,0 +1,50 @@
+[
+  {
+    "id": "t-001",
+    "quote": "Eventism made it so easy to find markets that were right for my products. Within a month of joining, I'd booked stalls at three amazing events.",
+    "author_name": "Sarah Chen",
+    "author_role": "Founder, Sunny Side Candles",
+    "author_image_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    "type": "vendor"
+  },
+  {
+    "id": "t-002",
+    "quote": "We discovered so many incredible local events we never knew existed. From farmers markets to craft fairs, every weekend is an adventure now.",
+    "author_name": "Mike & Jenny Thompson",
+    "author_role": "Sydney locals",
+    "author_image_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    "type": "attendee"
+  },
+  {
+    "id": "t-003",
+    "quote": "The vendor discovery feature helped us find amazing stallholders for our market. The quality of applications has noticeably improved since we started using Eventism.",
+    "author_name": "David Park",
+    "author_role": "Director, Sydney Markets Collective",
+    "author_image_url": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+    "type": "organizer"
+  },
+  {
+    "id": "t-004",
+    "quote": "As a food vendor, finding events with the right crowd is crucial. Eventism's filters let me find family-friendly events where my pierogies are always a hit.",
+    "author_name": "Anna Kowalski",
+    "author_role": "Owner, Pocket Pierogies",
+    "author_image_url": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+    "type": "vendor"
+  },
+  {
+    "id": "t-005",
+    "quote": "The calendar view is a game-changer. I can plan my weekends around all the events happening in Brisbane without missing a single one.",
+    "author_name": "Chris Wong",
+    "author_role": "Event enthusiast",
+    "author_image_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+    "type": "attendee"
+  },
+  {
+    "id": "t-006",
+    "quote": "Running a sustainable events company, it was hard to find vendors who shared our values. Eventism's vendor directory changed everything for us.",
+    "author_name": "Emma Green",
+    "author_role": "Founder, Green Events Co",
+    "author_image_url": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
+    "type": "organizer"
+  }
+]

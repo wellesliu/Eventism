@@ -6,6 +6,11 @@ import '../features/map/map_page.dart';
 import '../features/calendar/calendar_page.dart';
 import '../features/event_detail/event_detail_page.dart';
 import '../features/about/about_page.dart';
+import '../features/vendors/vendors_landing_page.dart';
+import '../features/vendors/vendor_directory_page.dart';
+import '../features/vendors/vendor_profile_page.dart';
+import '../features/organizers/organizer_directory_page.dart';
+import '../features/organizers/organizer_profile_page.dart';
 import '../shared/widgets/shell_scaffold.dart';
 
 final router = GoRouter(
@@ -56,6 +61,47 @@ final router = GoRouter(
           name: 'about',
           pageBuilder: (context, state) => const NoTransitionPage(
             child: AboutPage(),
+          ),
+        ),
+        // Vendor routes
+        GoRoute(
+          path: '/vendors',
+          name: 'vendorsLanding',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: VendorsLandingPage(),
+          ),
+        ),
+        GoRoute(
+          path: '/vendors/directory',
+          name: 'vendorDirectory',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: VendorDirectoryPage(),
+          ),
+        ),
+        GoRoute(
+          path: '/vendor/:id',
+          name: 'vendorProfile',
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: VendorProfilePage(
+              vendorId: state.pathParameters['id']!,
+            ),
+          ),
+        ),
+        // Organizer routes
+        GoRoute(
+          path: '/organizers',
+          name: 'organizerDirectory',
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: OrganizerDirectoryPage(),
+          ),
+        ),
+        GoRoute(
+          path: '/organizer/:id',
+          name: 'organizerProfile',
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: OrganizerProfilePage(
+              organizerId: state.pathParameters['id']!,
+            ),
           ),
         ),
       ],

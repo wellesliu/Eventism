@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme.dart';
 import '../../../data/models/event.dart';
+import '../../../shared/widgets/event_badge.dart';
 
 class EventHeader extends StatelessWidget {
   final Event event;
@@ -29,13 +30,34 @@ class EventHeader extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
+                Colors.black.withValues(alpha: 0.3),
                 Colors.transparent,
-                Colors.black.withValues(alpha: 0.7),
+                Colors.black.withValues(alpha: 0.8),
               ],
+              stops: const [0.0, 0.4, 1.0],
             ),
           ),
         ),
-        // Title
+        // Top badges
+        Positioned(
+          top: 60,
+          right: 16,
+          child: Row(
+            children: [
+              if (event.isFeatured) ...[
+                const EventBadge(type: EventBadgeType.featured),
+                const SizedBox(width: 8),
+              ],
+              if (event.priceRange == 'Free') ...[
+                const EventBadge(type: EventBadgeType.free),
+                const SizedBox(width: 8),
+              ],
+              if (event.acceptsVendors)
+                const EventBadge(type: EventBadgeType.vendorsWelcome),
+            ],
+          ),
+        ),
+        // Title and tags at bottom
         Positioned(
           left: 16,
           right: 16,

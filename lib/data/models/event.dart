@@ -3,6 +3,23 @@ import 'package:json_annotation/json_annotation.dart';
 part 'event.g.dart';
 
 @JsonSerializable()
+class VendorInfo {
+  @JsonKey(name: 'stall_fee')
+  final String? stallFee;
+  final List<String> includes;
+  final List<String> requirements;
+
+  const VendorInfo({
+    this.stallFee,
+    this.includes = const [],
+    this.requirements = const [],
+  });
+
+  factory VendorInfo.fromJson(Map<String, dynamic> json) => _$VendorInfoFromJson(json);
+  Map<String, dynamic> toJson() => _$VendorInfoToJson(this);
+}
+
+@JsonSerializable()
 class Event {
   final String id;
   @JsonKey(name: 'organiser_id')
@@ -24,6 +41,16 @@ class Event {
   final String status;
   final double? latitude;
   final double? longitude;
+  @JsonKey(name: 'expected_attendance')
+  final int? expectedAttendance;
+  @JsonKey(name: 'price_range')
+  final String? priceRange;
+  @JsonKey(name: 'interest_count')
+  final int interestCount;
+  @JsonKey(name: 'vendor_info')
+  final VendorInfo? vendorInfo;
+  @JsonKey(name: 'is_featured')
+  final bool isFeatured;
 
   const Event({
     required this.id,
@@ -40,6 +67,11 @@ class Event {
     this.status = 'published',
     this.latitude,
     this.longitude,
+    this.expectedAttendance,
+    this.priceRange,
+    this.interestCount = 0,
+    this.vendorInfo,
+    this.isFeatured = false,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);

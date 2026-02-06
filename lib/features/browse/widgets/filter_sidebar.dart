@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/constants.dart';
 import '../../../core/theme.dart';
 import '../../../data/providers/events_provider.dart';
 import '../browse_provider.dart';
@@ -113,6 +114,40 @@ class FilterSidebar extends ConsumerWidget {
             },
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (_, __) => const Text('Failed to load cities'),
+          ),
+          const SizedBox(height: 24),
+
+          // Price Range
+          Text(
+            'Price Range',
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: AppConstants.priceRangeOptions.map((price) {
+              final isSelected = filters.priceRange == price;
+              return FilterChip(
+                label: Text(price),
+                selected: isSelected,
+                onSelected: (_) {
+                  if (isSelected) {
+                    ref.read(browseStateProvider.notifier).setPriceRange(null);
+                  } else {
+                    ref.read(browseStateProvider.notifier).setPriceRange(price);
+                  }
+                },
+                selectedColor: EventismTheme.primary.withValues(alpha: 0.2),
+                checkmarkColor: EventismTheme.primary,
+                labelStyle: TextStyle(
+                  color: isSelected
+                      ? EventismTheme.primary
+                      : EventismTheme.textPrimary,
+                  fontSize: 13,
+                ),
+              );
+            }).toList(),
           ),
           const SizedBox(height: 24),
 
