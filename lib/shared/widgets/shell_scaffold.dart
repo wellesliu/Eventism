@@ -11,7 +11,7 @@ class ShellScaffold extends StatelessWidget {
 
   const ShellScaffold({super.key, required this.child});
 
-  /// Routes that manage their own scrolling and use Expanded widgets.
+  /// Routes that manage their own scrolling (CustomScrollView, Expanded, etc).
   /// These should NOT be wrapped in SingleChildScrollView.
   static const _fullHeightRoutes = [
     '/browse',
@@ -19,6 +19,9 @@ class ShellScaffold extends StatelessWidget {
     '/calendar',
     '/vendors/directory',
     '/organizers',
+    '/event/',      // Event detail pages (have own Scaffold + CustomScrollView)
+    '/vendor/',     // Vendor profile pages (have own Scaffold + CustomScrollView)
+    '/organizer/',  // Organizer profile pages (have own Scaffold + CustomScrollView)
   ];
 
   bool _isFullHeightRoute(BuildContext context) {
