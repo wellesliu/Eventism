@@ -301,7 +301,7 @@ class _VendorDirectoryPageState extends ConsumerState<VendorDirectoryPage> {
                               crossAxisCount: isDesktop ? columns - 1 : columns,
                               mainAxisSpacing: 16,
                               crossAxisSpacing: 16,
-                              childAspectRatio: 0.85,
+                              childAspectRatio: isDesktop ? 1.1 : 0.85,
                             ),
                             itemCount: vendors.length,
                             itemBuilder: (context, index) {
@@ -318,7 +318,7 @@ class _VendorDirectoryPageState extends ConsumerState<VendorDirectoryPage> {
                       crossAxisCount: isDesktop ? columns - 1 : columns,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
-                      childAspectRatio: 0.85,
+                      childAspectRatio: isDesktop ? 1.1 : 0.85,
                     ),
                     itemCount: 6,
                     itemBuilder: (context, index) {
