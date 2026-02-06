@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/constants.dart';
@@ -70,12 +71,14 @@ class EntryPoints extends StatelessWidget {
   }
 
   Widget _buildEntryCard(BuildContext context, _EntryPoint entry, bool isMobile) {
-    return Material(
-      color: EventismTheme.surface,
-      borderRadius: BorderRadius.circular(16),
-      child: InkWell(
-        onTap: () => context.go(entry.route),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Material(
+        color: EventismTheme.surface,
         borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          onTap: () => context.go(entry.route),
+          borderRadius: BorderRadius.circular(16),
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
@@ -134,6 +137,7 @@ class EntryPoints extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,16 +38,19 @@ class CategoryChips extends ConsumerWidget {
               spacing: 8,
               runSpacing: 8,
               children: displayTags.map((tag) {
-                return ActionChip(
-                  label: Text(tag),
-                  backgroundColor: EventismTheme.surface,
-                  side: const BorderSide(color: EventismTheme.border),
-                  labelStyle: const TextStyle(
-                    color: EventismTheme.textPrimary,
+                return MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: ActionChip(
+                    label: Text(tag),
+                    backgroundColor: EventismTheme.surface,
+                    side: const BorderSide(color: EventismTheme.border),
+                    labelStyle: const TextStyle(
+                      color: EventismTheme.textPrimary,
+                    ),
+                    onPressed: () {
+                      context.go('/browse?tag=${Uri.encodeComponent(tag)}');
+                    },
                   ),
-                  onPressed: () {
-                    context.go('/browse?tag=${Uri.encodeComponent(tag)}');
-                  },
                 );
               }).toList(),
             );

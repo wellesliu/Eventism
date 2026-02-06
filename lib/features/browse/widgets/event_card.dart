@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
@@ -17,10 +18,12 @@ class EventCard extends StatelessWidget {
     final dateFormat = DateFormat(AppConstants.dateFormat);
     final timeFormat = DateFormat(AppConstants.timeFormat);
 
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => context.go('/event/${event.id}'),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => context.go('/event/${event.id}'),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -76,86 +79,80 @@ class EventCard extends StatelessWidget {
                 ],
               ),
             ),
-            // Content
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Date
-                    if (event.startDateTime != null)
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            size: 14,
-                            color: EventismTheme.primary,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            dateFormat.format(event.startDateTime!),
-                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  color: EventismTheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.access_time,
-                            size: 14,
-                            color: EventismTheme.primary,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            timeFormat.format(event.startDateTime!),
-                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                  color: EventismTheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                        ],
-                      ),
-                    const SizedBox(height: 8),
-                    // Title
-                    Text(
-                      event.name,
-                      style: Theme.of(context).textTheme.titleMedium,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 8),
-                    // Location
+            // Content - compact, no extra spacing after location
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Date
+                  if (event.startDateTime != null)
                     Row(
                       children: [
-                        const Icon(
-                          Icons.location_on_outlined,
+                        Icon(
+                          Icons.calendar_today,
                           size: 14,
-                          color: EventismTheme.textMuted,
+                          color: EventismTheme.primary,
                         ),
                         const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            event.locationShort,
-                            style: Theme.of(context).textTheme.bodySmall,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                        Text(
+                          dateFormat.format(event.startDateTime!),
+                          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                color: EventismTheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                        const SizedBox(width: 8),
+                        Icon(
+                          Icons.access_time,
+                          size: 14,
+                          color: EventismTheme.primary,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          timeFormat.format(event.startDateTime!),
+                          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                color: EventismTheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
-                    // Vendor badge
-                    if (event.acceptsVendors)
-                      const Padding(
-                        padding: EdgeInsets.only(top: 8),
-                        child: EventBadge(type: EventBadgeType.vendorsWelcome),
+                  const SizedBox(height: 8),
+                  // Title
+                  Text(
+                    event.name,
+                    style: Theme.of(context).textTheme.titleMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 8),
+                  // Location
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 14,
+                        color: EventismTheme.textMuted,
                       ),
-                  ],
-                ),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          event.locationShort,
+                          style: Theme.of(context).textTheme.bodySmall,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
         ),
+      ),
       ),
     );
   }
