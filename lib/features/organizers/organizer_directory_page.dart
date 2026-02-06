@@ -286,7 +286,7 @@ class _OrganizerDirectoryPageState extends ConsumerState<OrganizerDirectoryPage>
                               crossAxisCount: isDesktop ? columns - 1 : columns,
                               mainAxisSpacing: 16,
                               crossAxisSpacing: 16,
-                              childAspectRatio: isDesktop ? 1.1 : 0.85,
+                              childAspectRatio: isDesktop ? 1.6 : 1.0,
                             ),
                             itemCount: organizers.length,
                             itemBuilder: (context, index) {
@@ -303,7 +303,7 @@ class _OrganizerDirectoryPageState extends ConsumerState<OrganizerDirectoryPage>
                       crossAxisCount: isDesktop ? columns - 1 : columns,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
-                      childAspectRatio: isDesktop ? 1.1 : 0.85,
+                      childAspectRatio: isDesktop ? 1.6 : 1.0,
                     ),
                     itemCount: 6,
                     itemBuilder: (context, index) {

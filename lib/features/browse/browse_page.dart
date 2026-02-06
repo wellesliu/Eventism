@@ -398,8 +398,8 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                                     crossAxisCount: isDesktop ? columns - 1 : columns,
                                     mainAxisSpacing: 16,
                                     crossAxisSpacing: 16,
-                                    // Desktop cards are wider so need higher ratio, mobile needs lower
-                                    childAspectRatio: isDesktop ? 1.1 : 0.85,
+                                    // Higher ratio = shorter cards. Desktop: wide/short, Mobile: narrower/taller
+                                    childAspectRatio: isDesktop ? 1.6 : 1.0,
                                   ),
                                   itemCount: result.events.length,
                                   itemBuilder: (context, index) {
