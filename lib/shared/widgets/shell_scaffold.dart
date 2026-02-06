@@ -11,35 +11,49 @@ class ShellScaffold extends StatelessWidget {
 
   const ShellScaffold({super.key, required this.child});
 
+  /// Routes that manage their own scrolling and use Expanded widgets.
+  /// These should NOT be wrapped in SingleChildScrollView.
+  static const _fullHeightRoutes = ['/browse', '/map', '/calendar'];
+
+  bool _isFullHeightRoute(BuildContext context) {
+    final path = GoRouterState.of(context).uri.path;
+    return _fullHeightRoutes.any((route) => path.startsWith(route));
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     final isMobile = Breakpoints.isMobile(width);
+    final isFullHeight = _isFullHeightRoute(context);
 
     return Scaffold(
       appBar: isMobile ? _buildMobileAppBar(context) : null,
       drawer: isMobile ? _buildDrawer(context) : null,
       body: isMobile
-          ? SingleChildScrollView(
-              child: Column(
-                children: [
-                  child,
-                  const Footer(),
-                ],
-              ),
-            )
+          ? isFullHeight
+              ? child
+              : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      child,
+                      const Footer(),
+                    ],
+                  ),
+                )
           : Column(
               children: [
                 _buildDesktopNav(context),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        child,
-                        const Footer(),
-                      ],
-                    ),
-                  ),
+                  child: isFullHeight
+                      ? child
+                      : SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              child,
+                              const Footer(),
+                            ],
+                          ),
+                        ),
                 ),
               ],
             ),
