@@ -398,7 +398,7 @@ class _BrowsePageState extends ConsumerState<BrowsePage> {
                                     crossAxisCount: isDesktop ? columns - 1 : columns,
                                     mainAxisSpacing: 16,
                                     crossAxisSpacing: 16,
-                                    childAspectRatio: 1.0,
+                                    childAspectRatio: 0.85, // Taller cards to fit image + content
                                   ),
                                   itemCount: result.events.length,
                                   itemBuilder: (context, index) {
